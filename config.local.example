@@ -1,0 +1,21 @@
+<?php
+/*
+Duplicate and rename this file to config.local.php
+Override default configuration with your local environement setup.
+config.local.php file must not be checked into Version Control Systems
+*/
+
+
+// Run mode
+
+$isDevMode = true;
+
+
+// Database configuration
+
+$db_user = "root";
+$db_pass = "";
+$db_name = "db";
+$db_host = "localhost";
+
+?>

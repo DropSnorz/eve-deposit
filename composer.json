@@ -1,0 +1,25 @@
+{
+
+    "name": "PhpMVCBaseApp",
+    "description": "PHP MVC Aoo ready to use",
+    "keywords": ["php", "mvc"],
+
+    "require": {
+
+        "php": ">=7.0.0",
+        "nikic/fast-route": "1.2.0",
+        "willdurand/negotiation" : "2.3.1",
+        "patricklouys/http":"~1.4",
+        "respect/validation": "^1.1",
+        "doctrine/orm": "2.4.*",
+        "rdlowrey/auryn": "^1.4",
+        "twig/twig": "~1.0"
+
+    },
+
+    "autoload": {
+        "psr-0": {"": ["src/core/models" , "src/core/repositories" ]}    },
+    "require-dev": {
+        "codeception/codeception": "^2.3"
+    }
+}

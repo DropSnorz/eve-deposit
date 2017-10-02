@@ -1,0 +1,13 @@
+{% if type == 'error' %}
+	<div class="alert alert-danger alert-dismissable fade in">
+{% elseif type == 'success' %}
+	<div class="alert alert-success alert-dismissable fade in">
+{% elseif type == 'warning' %}
+	<div class="alert alert-warning alert-dismissable fade in">
+{% else %}
+	<div class="alert alert-info alert-dismissable fade in">
+{% endif %}
+	    <span>{{text}}</span>
+	    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	</div>
+
