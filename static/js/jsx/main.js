@@ -1,1 +1,1 @@
-import Ore from './ore.jsx';
+import OreApp from './oreApp.jsx';

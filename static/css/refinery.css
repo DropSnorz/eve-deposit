@@ -141,8 +141,8 @@ a {
     background: rgba(255, 255, 255, 0.1); }
 
 .content-section {
-  padding-top: 150px;
-  padding-bottom: 150px; }
+  padding-top: 100px;
+  padding-bottom: 100px; }
 
 .download-section {
   color: white;
@@ -159,8 +159,8 @@ a {
 
 @media (min-width: 992px) {
   .content-section {
-    padding-top: 200px;
-    padding-bottom: 200px; }
+    padding-top: 150px;
+    padding-bottom: 150px; }
   #map {
     height: 350px; } }
 
@@ -174,14 +174,14 @@ a {
   border-radius: 0; }
 
 .btn-default {
-  color: #42DCA3;
-  border: 1px solid #42DCA3;
-  background-color: transparent; }
+  color: #95A5A6;
+  border: 1px solid #ABB7B7;
+  background-color: #95A5A6; }
   .btn-default:focus, .btn-default:hover {
     color: black;
-    border: 1px solid #42DCA3;
+    border: 1px solid #829091;
     outline: none;
-    background-color: #42DCA3; }
+    background-color: #829091; }
 
 ul.banner-social-buttons {
   margin-top: 0; }
