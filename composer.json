@@ -1,8 +1,8 @@
 {
 
-    "name": "PhpMVCBaseApp",
-    "description": "PHP MVC Aoo ready to use",
-    "keywords": ["php", "mvc"],
+    "name": "Eve refinery",
+    "description": "",
+    "keywords": ["eve online", "industry"],
 
     "require": {
 

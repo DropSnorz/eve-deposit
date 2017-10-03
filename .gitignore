@@ -1,3 +1,4 @@
 config.local.php
 vendor/**
 tests/_log/*
+node_modules/**
