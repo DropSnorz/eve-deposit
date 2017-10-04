@@ -1086,7 +1086,7 @@ var OreApp = function (_React$Component) {
   return OreApp;
 }(_react2.default.Component);
 
-var mineralList = [{ name: "tritanium" }, { name: "Mexallon" }];
+var mineralList = [{ name: "Tritanium" }, { name: "Mexallon" }];
 var oreList = [{ name: "Veldspar", price: "1" }, { name: "Scordite", price: "2" }];
 _reactDom2.default.render(_react2.default.createElement(OreApp, { mineralList: mineralList, oreList: oreList }), document.getElementById('ore-component'));
 
@@ -21292,47 +21292,54 @@ var OreFilter = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
-                    'div',
-                    { className: 'text-center' },
-                    _react2.default.createElement(
-                        'a',
-                        { className: 'btn btn-primary' },
-                        'High Sec'
-                    ),
-                    _react2.default.createElement(
-                        'a',
-                        { className: 'btn btn-danger' },
-                        'Low Sec'
-                    ),
-                    _react2.default.createElement(
-                        'a',
-                        { className: 'btn btn-default' },
-                        'All'
-                    )
-                ),
+                _react2.default.createElement(SecurityFilter, null),
                 _react2.default.createElement(
                     'form',
                     null,
-                    _react2.default.createElement('input', { type: 'text', placeholder: 'Ore name...' }),
                     _react2.default.createElement(
-                        'select',
-                        null,
+                        'div',
+                        { className: 'row' },
                         _react2.default.createElement(
-                            'option',
-                            null,
-                            ' Sell Profits '
+                            'div',
+                            { className: 'col-md-8' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'input-group' },
+                                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Ore name...' }),
+                                _react2.default.createElement(
+                                    'span',
+                                    { className: 'input-group-btn' },
+                                    _react2.default.createElement(
+                                        'a',
+                                        { className: 'btn btn-md btn-primary' },
+                                        _react2.default.createElement('i', { className: 'fa fa-search' })
+                                    )
+                                )
+                            )
                         ),
                         _react2.default.createElement(
-                            'option',
-                            null,
-                            ' Refinery Profits '
+                            'div',
+                            { className: 'col-md-4' },
+                            _react2.default.createElement(
+                                'select',
+                                { className: 'form-control' },
+                                _react2.default.createElement(
+                                    'option',
+                                    null,
+                                    ' Sell Profits '
+                                ),
+                                _react2.default.createElement(
+                                    'option',
+                                    null,
+                                    ' Refinery Profits '
+                                )
+                            )
                         )
                     )
                 ),
                 _react2.default.createElement(
                     'div',
-                    null,
+                    { className: 'mt-2' },
                     minerals
                 )
             );
@@ -21342,17 +21349,72 @@ var OreFilter = function (_React$Component) {
     return OreFilter;
 }(_react2.default.Component);
 
-var MineralFilter = function (_React$Component2) {
-    _inherits(MineralFilter, _React$Component2);
+var SecurityFilter = function (_React$Component2) {
+    _inherits(SecurityFilter, _React$Component2);
+
+    function SecurityFilter(props) {
+        _classCallCheck(this, SecurityFilter);
+
+        var _this2 = _possibleConstructorReturn(this, (SecurityFilter.__proto__ || Object.getPrototypeOf(SecurityFilter)).call(this, props));
+
+        _this2.state = { selected: "all" };
+        _this2.handleClick = _this2.handleClick.bind(_this2);
+
+        return _this2;
+    }
+
+    _createClass(SecurityFilter, [{
+        key: 'handleClick',
+        value: function handleClick(event) {
+            var target = event.currentTarget;
+            event.persist();
+            this.setState(function (prevState) {
+                return {
+                    selected: target.getAttribute("data-filter")
+                };
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var name = this.props.name;
+            var selected = this.state.selected;
+            return _react2.default.createElement(
+                'div',
+                { className: 'text-center mb-3' },
+                _react2.default.createElement(
+                    'a',
+                    { className: "btn btn-primary " + (selected != "high-sec" ? "btn-transparent" : ""), 'data-filter': 'high-sec', onClick: this.handleClick },
+                    'High Sec'
+                ),
+                _react2.default.createElement(
+                    'a',
+                    { className: "btn btn-danger " + (selected != "low-sec" ? "btn-transparent" : ""), 'data-filter': 'low-sec', onClick: this.handleClick },
+                    'Low Sec'
+                ),
+                _react2.default.createElement(
+                    'a',
+                    { className: "btn btn-default " + (selected != "all" ? "btn-transparent" : ""), 'data-filter': 'all', onClick: this.handleClick },
+                    'All'
+                )
+            );
+        }
+    }]);
+
+    return SecurityFilter;
+}(_react2.default.Component);
+
+var MineralFilter = function (_React$Component3) {
+    _inherits(MineralFilter, _React$Component3);
 
     function MineralFilter(props) {
         _classCallCheck(this, MineralFilter);
 
-        var _this2 = _possibleConstructorReturn(this, (MineralFilter.__proto__ || Object.getPrototypeOf(MineralFilter)).call(this, props));
+        var _this3 = _possibleConstructorReturn(this, (MineralFilter.__proto__ || Object.getPrototypeOf(MineralFilter)).call(this, props));
 
-        _this2.state = { selected: false };
-        _this2.handleClick = _this2.handleClick.bind(_this2);
-        return _this2;
+        _this3.state = { selected: false };
+        _this3.handleClick = _this3.handleClick.bind(_this3);
+        return _this3;
     }
 
     _createClass(MineralFilter, [{
@@ -21378,7 +21440,7 @@ var MineralFilter = function (_React$Component2) {
                 _react2.default.createElement(
                     'span',
                     { className: "badge badge-primary " + notSelected, onClick: this.handleClick },
-                    ' ',
+                    _react2.default.createElement('img', { className: 'badge-icon', src: '/media/minerals/icons/default.png', alt: '' }),
                     name,
                     ' '
                 )

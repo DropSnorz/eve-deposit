@@ -141,8 +141,8 @@ a {
     background: rgba(255, 255, 255, 0.1); }
 
 .content-section {
-  padding-top: 100px;
-  padding-bottom: 100px; }
+  padding-top: 60px;
+  padding-bottom: 60px; }
 
 .download-section {
   color: white;
@@ -159,8 +159,8 @@ a {
 
 @media (min-width: 992px) {
   .content-section {
-    padding-top: 150px;
-    padding-bottom: 150px; }
+    padding-top: 120px;
+    padding-bottom: 120px; }
   #map {
     height: 350px; } }
 
@@ -182,6 +182,10 @@ a {
     border: 1px solid #829091;
     outline: none;
     background-color: #829091; }
+
+.btn-transparent{
+  background-color:transparent;
+}
 
 ul.banner-social-buttons {
   margin-top: 0; }
@@ -232,4 +236,9 @@ body {
 
 .badge-transparent{
   background-color:transparent;
-};
+}
+
+.badge-icon{
+  max-height:20px;
+}
+
