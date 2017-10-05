@@ -1088,7 +1088,7 @@ var OreApp = function (_React$Component) {
 
 var mineralList = [{ name: "Tritanium" }, { name: "Mexallon" }];
 var oreList = [{ name: "Veldspar", price: "1" }, { name: "Scordite", price: "2" }];
-_reactDom2.default.render(_react2.default.createElement(OreApp, { mineralList: mineralList, oreList: oreList }), document.getElementById('ore-component'));
+_reactDom2.default.render(_react2.default.createElement(OreApp, { mineralList: mineralList, oreList: primaryOres }), document.getElementById('ore-component'));
 
 /***/ }),
 /* 18 */

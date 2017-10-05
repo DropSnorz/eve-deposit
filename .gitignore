@@ -2,3 +2,4 @@ config.local.php
 vendor/**
 tests/_log/*
 node_modules/**
+db/data.sqlite

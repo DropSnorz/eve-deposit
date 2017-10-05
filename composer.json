@@ -18,7 +18,7 @@
     },
 
     "autoload": {
-        "psr-0": {"": ["src/core/models" , "src/core/repositories" ]}    },
+        "psr-0": {"": ["src/core/models" , "src/core/repositories", "src/refinery/models" , "src/refinery/repositories" ]}    },
     "require-dev": {
         "codeception/codeception": "^2.3"
     }

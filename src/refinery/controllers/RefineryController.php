@@ -5,7 +5,12 @@ class RefineryController extends BaseController{
 
 	function getHome(){
 
-		$data = [];
+		$em = getEntityManager();
+
+		$primaryOres = $em->getRepository("Ore")->findAllPrimaryOreSecondaryRelated();
+		$primaryOres_json =  json_encode($primaryOres);
+
+		$data = ["primaryOresData" => $primaryOres_json];
 		$content = $this->render('home', $data);
 		$this->response->setContent($content);
 	}

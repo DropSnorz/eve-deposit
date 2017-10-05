@@ -167,13 +167,17 @@
 
     <!-- Custom scripts for this template -->
     <script src="/static/js/grayscale.min.js"></script>
-    <script src="/static/js/bundle.js"></script>
 
     <script>
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
       })
+
+      var primaryOres = JSON.parse('{{primaryOresData}}'.replace(/&quot;/g,'"'));
     </script>
+
+    <script src="/static/js/bundle.js"></script>
+
 
 
   </body>
