@@ -21502,13 +21502,12 @@ var OreList = function (_React$Component) {
       var oreList = this.props.oreList;
       var list = oreList.map(function (item) {
         return _react2.default.createElement(_oreItem2.default, {
-          name: item.name,
-          price: item.price });
+          item: item });
       }, this);
 
       return _react2.default.createElement(
         'div',
-        { className: 'ore-list' },
+        { className: 'ore-list mt-4' },
         list
       );
     }
@@ -21527,7 +21526,7 @@ exports.default = OreList;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21549,33 +21548,76 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var OreItem = function (_React$Component) {
-  _inherits(OreItem, _React$Component);
+	_inherits(OreItem, _React$Component);
 
-  function OreItem(props) {
-    _classCallCheck(this, OreItem);
+	function OreItem() {
+		_classCallCheck(this, OreItem);
 
-    var _this = _possibleConstructorReturn(this, (OreItem.__proto__ || Object.getPrototypeOf(OreItem)).call(this, props));
+		return _possibleConstructorReturn(this, (OreItem.__proto__ || Object.getPrototypeOf(OreItem)).apply(this, arguments));
+	}
 
-    _this.state = { selected: false };
-    return _this;
-  }
+	_createClass(OreItem, [{
+		key: 'render',
+		value: function render() {
+			var name = this.props.item.name;
+			var price = this.props.item.unitPrice;
+			var secondaryOres = this.props.item.secondaryOres;
+			var secondaryOresDisplay = secondaryOres.map(function (item) {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'small' },
+					_react2.default.createElement(
+						'span',
+						null,
+						item.name,
+						' ',
+						_react2.default.createElement(
+							'span',
+							{ 'class': 'float-right text-success' },
+							item.unitPrice,
+							' ISK'
+						)
+					)
+				);
+			}, this);
 
-  _createClass(OreItem, [{
-    key: 'render',
-    value: function render() {
-      var name = this.props.name;
-      var price = this.props.price;
-      return _react2.default.createElement(
-        'div',
-        null,
-        name,
-        ' : ',
-        price
-      );
-    }
-  }]);
+			return _react2.default.createElement(
+				'div',
+				{ className: '' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'ore-row' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'media' },
+						_react2.default.createElement('img', { className: 'd-flex mr-3', src: '/media/ore/icons/default.png', alt: '' }),
+						_react2.default.createElement(
+							'div',
+							{ className: 'media-body' },
+							_react2.default.createElement(
+								'strong',
+								null,
+								name,
+								_react2.default.createElement(
+									'span',
+									{ className: 'float-right text-success' },
+									price,
+									' ISK'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								null,
+								secondaryOresDisplay
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
 
-  return OreItem;
+	return OreItem;
 }(_react2.default.Component);
 
 exports.default = OreItem;

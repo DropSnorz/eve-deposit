@@ -21,11 +21,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
-  margin: 0 0 35px;
-  letter-spacing: 1px;
-  text-transform: uppercase; }
+  margin: 0 0 10px;
+  letter-spacing: 1px; }
 
 p {
   font-size: 16px;
@@ -242,6 +241,12 @@ body {
     border-radius: 0 0.25rem 0.25rem 0;
 }
 
+.ore-row{
+  background-color:#2d2d2d80;
+  border: 1px solid rgba(69, 69, 69, 0.55);
+  padding:8px;
+}
+
 .badge-bordered{
   border: 2px solid;
 }
@@ -263,3 +268,6 @@ body {
   max-height:23px;
 }
 
+.small{
+  line-height: 1.2;
+}

@@ -10,12 +10,11 @@ export default class OreList extends React.Component {
   	var list = oreList.map(function (item) {
 				return (
 					<OreItem
-						name={item.name}
-						price={item.price} />
+						item={item} />
 				);
 		}, this);
 
-    return <div className="ore-list">
+    return <div className="ore-list mt-4">
       	{list}
       </div>
     
