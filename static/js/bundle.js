@@ -1073,11 +1073,6 @@ var OreApp = function (_React$Component) {
           'div',
           null,
           _react2.default.createElement(_oreList2.default, { oreList: this.props.oreList })
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Hello !'
         )
       );
     }
@@ -1086,9 +1081,7 @@ var OreApp = function (_React$Component) {
   return OreApp;
 }(_react2.default.Component);
 
-var mineralList = [{ name: "Tritanium" }, { name: "Mexallon" }];
-var oreList = [{ name: "Veldspar", price: "1" }, { name: "Scordite", price: "2" }];
-_reactDom2.default.render(_react2.default.createElement(OreApp, { mineralList: mineralList, oreList: primaryOres }), document.getElementById('ore-component'));
+_reactDom2.default.render(_react2.default.createElement(OreApp, { mineralList: minerals, oreList: primaryOres }), document.getElementById('ore-component'));
 
 /***/ }),
 /* 18 */
@@ -21285,8 +21278,7 @@ var OreFilter = function (_React$Component) {
         key: 'render',
         value: function render() {
             var minerals = this.props.mineralList.map(function (item) {
-                return _react2.default.createElement(MineralFilter, {
-                    name: item.name });
+                return _react2.default.createElement(MineralFilter, { item: item });
             }, this);
 
             return _react2.default.createElement(
@@ -21429,7 +21421,7 @@ var MineralFilter = function (_React$Component3) {
     }, {
         key: 'render',
         value: function render() {
-            var name = this.props.name;
+            var mineral = this.props.item;
             var notSelected = "";
             if (!this.state.selected) {
                 notSelected = "badge-transparent";
@@ -21440,8 +21432,8 @@ var MineralFilter = function (_React$Component3) {
                 _react2.default.createElement(
                     'span',
                     { className: "badge badge-primary badge-bordered " + notSelected, onClick: this.handleClick },
-                    _react2.default.createElement('img', { className: 'badge-icon', src: '/media/minerals/icons/default.png', alt: '' }),
-                    name,
+                    _react2.default.createElement('img', { className: 'badge-icon', src: "/media/minerals/icons/" + mineral.id + ".png", alt: '' }),
+                    mineral.name,
                     ' '
                 )
             );
@@ -21573,7 +21565,7 @@ var OreItem = function (_React$Component) {
 						' ',
 						_react2.default.createElement(
 							'span',
-							{ 'class': 'float-right text-success' },
+							{ className: 'float-right text-success' },
 							item.unitPrice,
 							' ISK'
 						)

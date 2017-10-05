@@ -10,7 +10,11 @@ class RefineryController extends BaseController{
 		$primaryOres = $em->getRepository("Ore")->findAllPrimaryOreSecondaryRelated();
 		$primaryOres_json =  json_encode($primaryOres);
 
-		$data = ["primaryOresData" => $primaryOres_json];
+		$minerals = $em->getRepository("Mineral")->findAllAsArray();
+		$minerals_json = json_encode($minerals);
+
+		$data = ["primaryOresData" => $primaryOres_json,
+				"mineralsData" => $minerals_json];
 		$content = $this->render('home', $data);
 		$this->response->setContent($content);
 	}

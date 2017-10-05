@@ -16,11 +16,8 @@ class OreApp extends React.Component {
     				<OreList oreList={this.props.oreList} />
     			</div>
 
-    			<p>Hello !</p>
     		</div>
   }
 }
 
-var mineralList = [{name:"Tritanium"}, {name:"Mexallon"}];
-var oreList = [{name:"Veldspar", price:"1"}, {name:"Scordite", price:"2"}];
-ReactDOM.render(<OreApp mineralList = {mineralList} oreList = {primaryOres} />, document.getElementById('ore-component'));
+ReactDOM.render(<OreApp mineralList = {minerals} oreList = {primaryOres} />, document.getElementById('ore-component'));

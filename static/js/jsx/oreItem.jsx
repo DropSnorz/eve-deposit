@@ -10,7 +10,7 @@ export default class OreItem extends React.Component {
   	var secondaryOresDisplay = secondaryOres.map(function (item) {
 		return (
 			<div className="small">
-			<span>{item.name} <span class="float-right text-success">{item.unitPrice} ISK</span></span>
+			<span>{item.name} <span className="float-right text-success">{item.unitPrice} ISK</span></span>
 			</div>
 			);
 		}, this);

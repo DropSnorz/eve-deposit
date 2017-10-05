@@ -5,8 +5,7 @@ class OreFilter extends React.Component {
   render() {
     var minerals = this.props.mineralList.map(function (item) {
             return (
-                <MineralFilter
-                    name={item.name} />
+                <MineralFilter item={item} />
             );
     }, this);
 
@@ -83,14 +82,14 @@ class MineralFilter extends React.Component{
     }
 
     render(){
-        var name = this.props.name;
+        var mineral = this.props.item;
         var notSelected = "";
         if(!this.state.selected){
             notSelected = "badge-transparent";
         }
         return <span className="mr-2">
                 <span className={"badge badge-primary badge-bordered " + notSelected } onClick={this.handleClick}>
-                    <img className="badge-icon" src="/media/minerals/icons/default.png" alt="" />{name} </span>
+                    <img className="badge-icon" src={"/media/minerals/icons/" + mineral.id  + ".png"} alt="" />{mineral.name} </span>
                 </span>
     }
 
