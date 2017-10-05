@@ -1062,7 +1062,7 @@ var OreApp = function (_React$Component) {
         _react2.default.createElement(
           'h1',
           null,
-          'Ore App'
+          'Ore'
         ),
         _react2.default.createElement(
           'div',
@@ -21439,7 +21439,7 @@ var MineralFilter = function (_React$Component3) {
                 { className: 'mr-2' },
                 _react2.default.createElement(
                     'span',
-                    { className: "badge badge-primary " + notSelected, onClick: this.handleClick },
+                    { className: "badge badge-primary badge-bordered " + notSelected, onClick: this.handleClick },
                     _react2.default.createElement('img', { className: 'badge-icon', src: '/media/minerals/icons/default.png', alt: '' }),
                     name,
                     ' '

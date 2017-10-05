@@ -55,9 +55,51 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 mx-auto">
-              <h1 class="brand-heading">Title</h1>
-              <p class="intro-text">A free, responsive, one page Bootstrap theme.
-                <br>Created by Start Bootstrap.</p>
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="mb-2">
+                    <span class="badge badge-info badge-labeled">
+                      High Sec <i>0.7</i>
+                    </span>
+                  </div>
+                  <img src="/media/ore/icons/default.png">
+                  <div class="mt-3">
+                    <div>Ore name</div>
+                    <span class="text-success">20.000 ISK</span>
+                  </div>
+                  <div>
+                    <span>
+                      <i class="fa fa-lg fa-recycle"></i> - 
+                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
+                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
+                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-2">
+                    <span class="badge badge-danger badge-labeled">
+                      Low Sec <i>0.1</i>
+                    </span>
+                  </div>
+                  <img src="/media/ore/icons/default.png">
+                  <div class="mt-3">
+                    <div>Ore name</div>
+                    <span class="text-success">20.000 ISK</span>
+                  </div>
+                  <div>
+                    <span>
+                      <i class="fa fa-lg fa-recycle"></i> - 
+                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
+                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
+                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              <span class="mt-5 mb-5"> </span>
               <a href="#ore-section" class="btn btn-circle js-scroll-trigger">
                 <i class="fa fa-angle-double-down animated"></i>
               </a>
@@ -126,6 +168,12 @@
     <!-- Custom scripts for this template -->
     <script src="/static/js/grayscale.min.js"></script>
     <script src="/static/js/bundle.js"></script>
+
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
 
 
   </body>
