@@ -21551,8 +21551,7 @@ var OreItem = function (_React$Component) {
 	_createClass(OreItem, [{
 		key: 'render',
 		value: function render() {
-			var name = this.props.item.name;
-			var price = this.props.item.unitPrice;
+			var item = this.props.item;
 			var secondaryOres = this.props.item.secondaryOres;
 			var secondaryOresDisplay = secondaryOres.map(function (item) {
 				return _react2.default.createElement(
@@ -21582,18 +21581,18 @@ var OreItem = function (_React$Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'media' },
-						_react2.default.createElement('img', { className: 'd-flex mr-3', src: '/media/ore/icons/default.png', alt: '' }),
+						_react2.default.createElement('img', { className: 'd-flex mr-3', src: "/media/ore/icons/" + item.graphicId + ".png", alt: '' }),
 						_react2.default.createElement(
 							'div',
 							{ className: 'media-body' },
 							_react2.default.createElement(
 								'strong',
 								null,
-								name,
+								item.name,
 								_react2.default.createElement(
 									'span',
 									{ className: 'float-right text-success' },
-									price,
+									item.unitPrice,
 									' ISK'
 								)
 							),

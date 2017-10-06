@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom';
 export default class OreItem extends React.Component {
 	
   render() {
-  	var name = this.props.item.name;
-  	var price = this.props.item.unitPrice;
+  	var item = this.props.item;
   	var secondaryOres = this.props.item.secondaryOres;
   	var secondaryOresDisplay = secondaryOres.map(function (item) {
 		return (
@@ -18,10 +17,10 @@ export default class OreItem extends React.Component {
     return 	<div className="">
     			<div className="ore-row">
 		    		<div className="media">
-		    			<img className="d-flex mr-3" src="/media/ore/icons/default.png" alt="" />
+		    			<img className="d-flex mr-3" src={"/media/ore/icons/" + item.graphicId + ".png"} alt="" />
 			    		<div className="media-body">
 			    			<strong>
-			    				{name}<span className="float-right text-success">{price} ISK</span>
+			    				{item.name}<span className="float-right text-success">{item.unitPrice} ISK</span>
 			    			</strong>
 			    			<div>
 			    				{secondaryOresDisplay}

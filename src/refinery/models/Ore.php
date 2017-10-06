@@ -17,6 +17,9 @@ class Ore
     private $unitVolume;
     /** @Column(type="float") **/
     private $unitPrice;
+    /** @Column(type="string", nullable=true) **/
+    private $graphicId;
+    
 
    	public function getId(){
    		return $this->id;
@@ -33,6 +36,9 @@ class Ore
    	public function getUnitPrice(){
    		return $this->unitPrice();
    	}
+    public function getGraphicId(){
+      return $this->graphicId();
+    }
 
 
 }
