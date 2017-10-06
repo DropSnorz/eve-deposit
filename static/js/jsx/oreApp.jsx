@@ -9,7 +9,7 @@ class OreApp extends React.Component {
     return 	<div>
     			<h1>Ore</h1>
     			<div className="ore-filters">
-    				<OreFilter mineralList = {this.props.mineralList} />
+    				<OreFilter mineralList = {this.props.mineralList} oreList={this.props.oreList} />
     			</div>
 
     			<div>

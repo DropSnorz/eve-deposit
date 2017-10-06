@@ -1067,7 +1067,7 @@ var OreApp = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'ore-filters' },
-          _react2.default.createElement(_oreFilter2.default, { mineralList: this.props.mineralList })
+          _react2.default.createElement(_oreFilter2.default, { mineralList: this.props.mineralList, oreList: this.props.oreList })
         ),
         _react2.default.createElement(
           'div',
@@ -21277,6 +21277,15 @@ var OreFilter = function (_React$Component) {
     _createClass(OreFilter, [{
         key: 'render',
         value: function render() {
+
+            var oreList = this.props.oreList.map(function (item) {
+                return _react2.default.createElement(
+                    'option',
+                    { value: item.id, 'data-graphic': item.graphicId },
+                    item.name
+                );
+            }, this);
+
             var minerals = this.props.mineralList.map(function (item) {
                 return _react2.default.createElement(MineralFilter, { item: item });
             }, this);
@@ -21297,15 +21306,10 @@ var OreFilter = function (_React$Component) {
                             _react2.default.createElement(
                                 'div',
                                 { className: 'input-group' },
-                                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Ore name...' }),
                                 _react2.default.createElement(
-                                    'span',
-                                    { className: 'input-group-btn' },
-                                    _react2.default.createElement(
-                                        'a',
-                                        { className: 'btn btn-md btn-primary' },
-                                        _react2.default.createElement('i', { className: 'fa fa-search' })
-                                    )
+                                    'select',
+                                    { id: 'ore-search', className: 'form-control', multiple: 'multiple' },
+                                    oreList
                                 )
                             )
                         ),

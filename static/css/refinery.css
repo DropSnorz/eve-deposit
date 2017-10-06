@@ -224,6 +224,23 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2); }
 
+.select2-results { 
+    color:black; 
+  }
+.select2-results__option[aria-selected=true] { 
+    color:black;
+ }
+ .select2-selection__rendered { 
+  color:black; 
+}
+
+.select2-icon{
+  height:20px;
+  vertical-align: middle;
+  margin-left:3px;
+}
+
+
 .badge-labeled {
     padding-top: 0;
     padding-bottom: 0;

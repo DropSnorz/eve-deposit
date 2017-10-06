@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 
 class OreFilter extends React.Component {
   render() {
+
+    var oreList = this.props.oreList.map(function (item) {
+            return (
+                <option value={item.id} data-graphic={item.graphicId}>{item.name}</option>
+            );
+    }, this);
+
+
     var minerals = this.props.mineralList.map(function (item) {
             return (
                 <MineralFilter item={item} />
@@ -16,10 +24,9 @@ class OreFilter extends React.Component {
                     <div className="row">
                         <div className="col-md-8">
                             <div className="input-group">
-		    		            <input type="text" className="form-control" placeholder="Ore name..." />
-                                <span className="input-group-btn">
-                                    <a className="btn btn-md btn-primary"><i className="fa fa-search"></i></a>
-                                </span>
+		    		            <select id="ore-search" className="form-control" multiple="multiple">
+                                    {oreList}
+                                </select>
                             </div>                       
                         </div>
                         <div className="col-md-4">
