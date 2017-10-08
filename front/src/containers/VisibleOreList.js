@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import OreList from '../oreList.jsx'
+import OreList from '../components/OreList.jsx'
 
 const getVisibleOreList = (oreList, filters) => {
   

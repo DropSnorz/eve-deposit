@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import OreItem from './oreItem.jsx';
+import OreItem from './OreItem.jsx';
 
 export default class OreList extends React.Component {
 

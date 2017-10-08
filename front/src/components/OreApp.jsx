@@ -1,8 +1,7 @@
 import React from 'react';
-import OreFilter from './oreFilter.jsx';
-import OreList from './oreList.jsx';
-import VisibleOreList from './containers/VisibleOreList.js';
-import Filter from './containers/Filter.js';
+import OreList from '../components/OreList.jsx';
+import VisibleOreList from '../containers/VisibleOreList.js';
+import Filter from '../containers/Filter.js';
 
 
 class OreApp extends React.Component {

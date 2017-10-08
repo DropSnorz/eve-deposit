@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import refineryApp from './reducers'
-import OreApp from './oreApp.jsx'
+import OreApp from './components/OreApp.jsx'
 
 
 var initialState = {oreNameVisibilityFilter: [],
@@ -17,4 +17,5 @@ ReactDOM.render(
 		<OreApp mineralList = {minerals} oreList = {primaryOres} />
 	</Provider>
 	, document.getElementById('ore-component'));
+
 

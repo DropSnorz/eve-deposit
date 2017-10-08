@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { setOreNameFilter } from '../actions'
-import OreFilter from '../oreFilter.jsx'
+import OreFilter from '../components/OreFilter.jsx'
 
 const mapStateToProps = state => {
   return {
