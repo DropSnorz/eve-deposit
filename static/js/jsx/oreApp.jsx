@@ -1,7 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import OreFilter from './oreFilter.jsx';
 import OreList from './oreList.jsx';
+import VisibleOreList from './containers/VisibleOreList.js';
+import Filter from './containers/Filter.js';
 
 
 class OreApp extends React.Component {
@@ -9,15 +10,15 @@ class OreApp extends React.Component {
     return 	<div>
     			<h1>Ore</h1>
     			<div className="ore-filters">
-    				<OreFilter mineralList = {this.props.mineralList} oreList={this.props.oreList} />
+    				<Filter mineralList = {this.props.mineralList} oreList={this.props.oreList} />
     			</div>
 
     			<div>
-    				<OreList oreList={this.props.oreList} />
+    				<VisibleOreList oreList={this.props.oreList} />
     			</div>
 
     		</div>
   }
 }
 
-ReactDOM.render(<OreApp mineralList = {minerals} oreList = {primaryOres} />, document.getElementById('ore-component'));
+export default OreApp

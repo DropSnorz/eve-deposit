@@ -2,6 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class OreFilter extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.handleNameFilterChanges = this.handleNameFilterChanges.bind(this);
+    }
+  
+  handleNameFilterChanges(){
+    this.nameFilters = [];
+    this.props.onNameFilterChange();
+  }
+
   render() {
 
     var oreList = this.props.oreList.map(function (item) {
@@ -24,7 +35,7 @@ class OreFilter extends React.Component {
                     <div className="row">
                         <div className="col-md-8">
                             <div className="input-group">
-		    		            <select id="ore-search" className="form-control" multiple="multiple">
+		    		            <select id="ore-search" className="form-control" multiple="multiple" onChange={this.handleNameFilterChanges}>
                                     {oreList}
                                 </select>
                             </div>                       
