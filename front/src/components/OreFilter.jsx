@@ -1,25 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import OreNameSelect from './OreNameSelect.jsx';
 
 class OreFilter extends React.Component {
+    propTypes:{
+        onNameFilterChange: PropTypes.func
+    }
 
     constructor(props) {
         super(props);
         this.handleNameFilterChanges = this.handleNameFilterChanges.bind(this);
     }
   
-  handleNameFilterChanges(){
-    this.nameFilters = [];
-    this.props.onNameFilterChange();
+  handleNameFilterChanges(value){
+
+      this.props.onNameFilterChange(value);
   }
 
   render() {
-
-    var oreList = this.props.oreList.map(function (item) {
-            return (
-                <option value={item.id} data-graphic={item.graphicId}>{item.name}</option>
-            );
-    }, this);
 
 
     var minerals = this.props.mineralList.map(function (item) {
@@ -34,10 +33,13 @@ class OreFilter extends React.Component {
 		    	<form>
                     <div className="row">
                         <div className="col-md-8">
-                            <div className="input-group">
-		    		            <select id="ore-search" className="form-control" multiple="multiple" onChange={this.handleNameFilterChanges}>
-                                    {oreList}
-                                </select>
+                            <div className="">
+		    		            <OreNameSelect 
+                                    oreList={this.props.oreList}
+                                    onSelectChange={this.handleNameFilterChanges}
+                                    value = {this.props.nameFilters}
+
+                                 />
                             </div>                       
                         </div>
                         <div className="col-md-4">
@@ -110,7 +112,6 @@ class MineralFilter extends React.Component{
                     <img className="badge-icon" src={"/media/minerals/icons/" + mineral.id  + ".png"} alt="" />{mineral.name} </span>
                 </span>
     }
-
 
 }
 

@@ -1,9 +1,9 @@
 
 
-export const setOreNameVisibilityFilter = filter => {
+export const setOreNameVisibilityFilter = nameFilters => {
   return {
     type: 'SET_ORE_NAME_FILTER',
-    filter
+    nameFilters
   }
 }
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setOreNameFilter } from '../actions'
+import { setOreNameVisibilityFilter } from '../actions'
 import OreFilter from '../components/OreFilter.jsx'
 
 const mapStateToProps = state => {
@@ -10,8 +10,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onNameFilterChange: () => {
-      dispatch(setOreNameVisibilityFilter(ownProps.nameFilters))
+    onNameFilterChange: (nameFilters) => {
+      dispatch(setOreNameVisibilityFilter(nameFilters))
     }
   }
 }

@@ -234,7 +234,7 @@ body {
   color:black; 
 }
 
-.select2-icon{
+.select-icon{
   height:20px;
   vertical-align: middle;
   margin-right:5px;
@@ -288,3 +288,4 @@ body {
 .small{
   line-height: 1.2;
 }
+

@@ -18,7 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
-    <link href="/static/lib/css/select2.min.css" rel="stylesheet" />
+    <link href="/node_modules/react-select/dist/react-select.css" rel="stylesheet" />
+
     <!-- Custom styles for this template -->
     <link href="/static/css/refinery.css" rel="stylesheet">
 
@@ -160,9 +161,6 @@
     <!-- Plugin JavaScript -->
     <script src="/static/js/jquery.easing.min.js"></script>
 
-    <script src="/static/lib/js/select2.min.js"></script>
-
-
     <!-- Custom scripts for this template -->
     <script src="/static/js/grayscale.js"></script>
 
@@ -176,22 +174,6 @@
     </script>
 
     <script src="/static/js/bundle.js"></script>
-
-    <script>
-    function formatOreOption(o){
-        var originalOption = o.element;
-        if (!o.id)
-          return o.text; // optgroup
-        else
-            return "<img class='select2-icon' src='/media/ore/icons/" + $(originalOption).data("graphic") + ".png'/>" + o.text;
-     }
-
-    $('#ore-search').select2({templateResult: formatOreOption, 
-      templateSelection:formatOreOption,
-      placeholder: "Search by Ore name",
-      escapeMarkup: function(m) { return m; }});
-    </script>
-
 
 
   </body>
