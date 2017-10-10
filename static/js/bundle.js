@@ -25856,7 +25856,7 @@ var oreNameVisibilityFilter = function oreNameVisibilityFilter() {
 
   switch (action.type) {
     case 'SET_ORE_NAME_FILTER':
-      return action.nameFilters;
+      return action.nameFilters.split(",");
     default:
       return state;
   }
@@ -26064,7 +26064,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var getVisibleOreList = function getVisibleOreList(oreList, filters) {
 
-  return oreList;
+  var filteredOre = oreList;
+
+  if (filters.length > 0 && filters[0] != "") {
+    filteredOre = oreList.filter(function (oreItem) {
+      return filters.filter(function (oreFilter) {
+        return oreItem.name == oreFilter;
+      }).length != 0;
+    });
+  }
+
+  return filteredOre;
 };
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
