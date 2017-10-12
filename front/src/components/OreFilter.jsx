@@ -5,7 +5,10 @@ import OreNameSelect from './OreNameSelect.jsx';
 
 class OreFilter extends React.Component {
     propTypes:{
-        onNameFilterChange: PropTypes.func
+        onNameFilterChange: PropTypes.func,
+        onSecurityLevelFilterChange: PropTypes.func
+        //nameFilters: array
+        //securityLevelFilter : string
     }
 
     constructor(props) {
@@ -29,7 +32,7 @@ class OreFilter extends React.Component {
 
     return  <div>
     			
-                <SecurityFilter />
+                <SecurityFilter securityLevelFilter={this.props.securityLevelFilter} onSecurityLevelFilterChange={this.props.onSecurityLevelFilterChange}/>
 		    	<form>
                     <div className="row">
                         <div className="col-md-8">
@@ -59,9 +62,13 @@ class OreFilter extends React.Component {
 }
 
 class SecurityFilter extends React.Component{
+        propTypes:{
+            onSecurityLevelFilterChange: PropTypes.func
+            //securityLevelFilter: stirng
+
+        }
         constructor(props) {
             super(props);
-            this.state = {selected: "all"};
             this.handleClick = this.handleClick.bind(this);
 
         }
@@ -69,19 +76,17 @@ class SecurityFilter extends React.Component{
         handleClick(event){
             var target = event.currentTarget;
             event.persist();
-            this.setState(prevState => ({
-                selected: target.getAttribute("data-filter")
-            }));
+
+            this.props.onSecurityLevelFilterChange(target.getAttribute("data-filter"));
         }
 
 
         render(){
-        var name = this.props.name;
-        var selected = this.state.selected;
+        var selected = this.props.securityLevelFilter;
         return  <div className="text-center mb-3">
-                    <a className={"btn btn-primary " + (selected!="high-sec" ? "btn-transparent" : "")} data-filter="high-sec" onClick={this.handleClick}>High Sec</a>
-                    <a className={"btn btn-danger "+ (selected!="low-sec" ? "btn-transparent" : "")} data-filter="low-sec" onClick={this.handleClick}>Low Sec</a>
-                    <a className={"btn btn-default "+ (selected!="all" ? "btn-transparent" : "")} data-filter="all" onClick={this.handleClick}>All</a>
+                    <a className={"btn btn-primary " + (selected!="HIGH_SEC" ? "btn-transparent" : "")} data-filter="HIGH_SEC" onClick={this.handleClick}>High Sec</a>
+                    <a className={"btn btn-danger "+ (selected!="LOW_SEC" ? "btn-transparent" : "")} data-filter="LOW_SEC" onClick={this.handleClick}>Low Sec</a>
+                    <a className={"btn btn-default "+ (selected!="ALL" ? "btn-transparent" : "")} data-filter="ALL" onClick={this.handleClick}>All</a>
                 </div>
     }
 }

@@ -7,3 +7,10 @@ export const setOreNameVisibilityFilter = nameFilters => {
   }
 }
 
+export const setOreSecurityLevelFilter = securityFilter =>{
+	return{
+		type:'SET_SECURITY_LEVEL_FILTER',
+		securityFilter
+	}
+}
+

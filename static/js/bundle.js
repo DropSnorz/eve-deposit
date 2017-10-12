@@ -4390,6 +4390,7 @@ var _OreApp2 = _interopRequireDefault(_OreApp);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = { oreNameVisibilityFilter: [],
+	oreSecurityLevelFilter: "ALL",
 	oreList: [] };
 
 var store = (0, _redux.createStore)(_reducers2.default, initialState);
@@ -25823,17 +25824,16 @@ var _redux = __webpack_require__(16);
 
 var _oreVisibilityFilter = __webpack_require__(81);
 
-var _oreVisibilityFilter2 = _interopRequireDefault(_oreVisibilityFilter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 /*
 	oreNameVisibilityFilter:[],
+	oreSecurityLevelFilter:""
 	oreList: undefined
 */
 
 var refineryApp = (0, _redux.combineReducers)({
-	oreNameVisibilityFilter: _oreVisibilityFilter2.default
+	oreNameVisibilityFilter: _oreVisibilityFilter.oreNameVisibilityFilter,
+	oreSecurityLevelFilter: _oreVisibilityFilter.oreSecurityLevelFilter
+
 });
 
 exports.default = refineryApp;
@@ -25848,9 +25848,7 @@ exports.default = refineryApp;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-
-var oreNameVisibilityFilter = function oreNameVisibilityFilter() {
+var oreNameVisibilityFilter = exports.oreNameVisibilityFilter = function oreNameVisibilityFilter() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
@@ -25862,7 +25860,17 @@ var oreNameVisibilityFilter = function oreNameVisibilityFilter() {
   }
 };
 
-exports.default = oreNameVisibilityFilter;
+var oreSecurityLevelFilter = exports.oreSecurityLevelFilter = function oreSecurityLevelFilter() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "ALL";
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'SET_SECURITY_LEVEL_FILTER':
+      return action.securityFilter;
+    default:
+      return state;
+  }
+};
 
 /***/ }),
 /* 82 */
@@ -26100,15 +26108,31 @@ var _OreList2 = _interopRequireDefault(_OreList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var getVisibleOreList = function getVisibleOreList(oreList, filters) {
+var getVisibleOreList = function getVisibleOreList(oreList, state) {
+
+  var nameFilters = state.oreNameVisibilityFilter;
+  var securityLevelFilter = state.oreSecurityLevelFilter;
 
   var filteredOre = oreList;
 
-  if (filters.length > 0 && filters[0] != "") {
+  if (nameFilters.length > 0 && nameFilters[0] != "") {
     filteredOre = oreList.filter(function (oreItem) {
-      return filters.filter(function (oreFilter) {
+      return nameFilters.filter(function (oreFilter) {
         return oreItem.name == oreFilter;
       }).length != 0;
+    });
+  }
+
+  if (securityLevelFilter != "ALL") {
+    filteredOre = filteredOre.filter(function (oreItem) {
+      if (securityLevelFilter == "HIGH_SEC") {
+        return oreItem.securityLevel > 0.4;
+      }
+      if (securityLevelFilter == "LOW_SEC") {
+        return oreItem.securityLevel < 0.5;
+      } else {
+        return true;
+      }
     });
   }
 
@@ -26117,7 +26141,7 @@ var getVisibleOreList = function getVisibleOreList(oreList, filters) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    oreList: getVisibleOreList(ownProps.oreList, state.oreNameVisibilityFilter)
+    oreList: getVisibleOreList(ownProps.oreList, state)
   };
 };
 
@@ -26148,7 +26172,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    nameFilters: state.oreNameVisibilityFilter
+    nameFilters: state.oreNameVisibilityFilter,
+    securityLevelFilter: state.oreSecurityLevelFilter
   };
 };
 
@@ -26156,6 +26181,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     onNameFilterChange: function onNameFilterChange(nameFilters) {
       dispatch((0, _actions.setOreNameVisibilityFilter)(nameFilters));
+    },
+    onSecurityLevelFilterChange: function onSecurityLevelFilterChange(securityFilter) {
+      dispatch((0, _actions.setOreSecurityLevelFilter)(securityFilter));
     }
   };
 };
@@ -26178,6 +26206,13 @@ var setOreNameVisibilityFilter = exports.setOreNameVisibilityFilter = function s
   return {
     type: 'SET_ORE_NAME_FILTER',
     nameFilters: nameFilters
+  };
+};
+
+var setOreSecurityLevelFilter = exports.setOreSecurityLevelFilter = function setOreSecurityLevelFilter(securityFilter) {
+  return {
+    type: 'SET_SECURITY_LEVEL_FILTER',
+    securityFilter: securityFilter
   };
 };
 
@@ -26247,7 +26282,7 @@ var OreFilter = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(SecurityFilter, null),
+                _react2.default.createElement(SecurityFilter, { securityLevelFilter: this.props.securityLevelFilter, onSecurityLevelFilterChange: this.props.onSecurityLevelFilterChange }),
                 _react2.default.createElement(
                     'form',
                     null,
@@ -26308,7 +26343,6 @@ var SecurityFilter = function (_React$Component2) {
 
         var _this2 = _possibleConstructorReturn(this, (SecurityFilter.__proto__ || Object.getPrototypeOf(SecurityFilter)).call(this, props));
 
-        _this2.state = { selected: "all" };
         _this2.handleClick = _this2.handleClick.bind(_this2);
 
         return _this2;
@@ -26319,33 +26353,29 @@ var SecurityFilter = function (_React$Component2) {
         value: function handleClick(event) {
             var target = event.currentTarget;
             event.persist();
-            this.setState(function (prevState) {
-                return {
-                    selected: target.getAttribute("data-filter")
-                };
-            });
+
+            this.props.onSecurityLevelFilterChange(target.getAttribute("data-filter"));
         }
     }, {
         key: 'render',
         value: function render() {
-            var name = this.props.name;
-            var selected = this.state.selected;
+            var selected = this.props.securityLevelFilter;
             return _react2.default.createElement(
                 'div',
                 { className: 'text-center mb-3' },
                 _react2.default.createElement(
                     'a',
-                    { className: "btn btn-primary " + (selected != "high-sec" ? "btn-transparent" : ""), 'data-filter': 'high-sec', onClick: this.handleClick },
+                    { className: "btn btn-primary " + (selected != "HIGH_SEC" ? "btn-transparent" : ""), 'data-filter': 'HIGH_SEC', onClick: this.handleClick },
                     'High Sec'
                 ),
                 _react2.default.createElement(
                     'a',
-                    { className: "btn btn-danger " + (selected != "low-sec" ? "btn-transparent" : ""), 'data-filter': 'low-sec', onClick: this.handleClick },
+                    { className: "btn btn-danger " + (selected != "LOW_SEC" ? "btn-transparent" : ""), 'data-filter': 'LOW_SEC', onClick: this.handleClick },
                     'Low Sec'
                 ),
                 _react2.default.createElement(
                     'a',
-                    { className: "btn btn-default " + (selected != "all" ? "btn-transparent" : ""), 'data-filter': 'all', onClick: this.handleClick },
+                    { className: "btn btn-default " + (selected != "ALL" ? "btn-transparent" : ""), 'data-filter': 'ALL', onClick: this.handleClick },
                     'All'
                 )
             );

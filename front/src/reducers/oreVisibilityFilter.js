@@ -1,6 +1,6 @@
 
 
-const oreNameVisibilityFilter = (state = [], action) => {
+export const oreNameVisibilityFilter = (state = [], action) => {
   switch (action.type) {
     case 'SET_ORE_NAME_FILTER':
       return action.nameFilters.split(",")
@@ -9,4 +9,12 @@ const oreNameVisibilityFilter = (state = [], action) => {
   }
 }
 
-export default oreNameVisibilityFilter
+
+export const oreSecurityLevelFilter = (state="ALL", action) => {
+	switch(action.type){
+		case 'SET_SECURITY_LEVEL_FILTER':
+			return action.securityFilter
+		default:
+			return state
+	}
+}
