@@ -17,6 +17,7 @@ export default class OreItem extends React.Component {
     return 	<div className="">
     			<div className="ore-row">
 		    		<div className="media">
+		    			<span className="d-flex"><SecurityLevelDisplay value={item.securityLevel} /></span>
 		    			<img className="d-flex mr-3" src={"/media/ore/icons/" + item.graphicId + ".png"} alt="" />
 			    		<div className="media-body">
 			    			<strong>
@@ -32,3 +33,21 @@ export default class OreItem extends React.Component {
   }
 }
 
+
+class SecurityLevelDisplay extends React.Component{
+	propTypes: {
+        value: PropTypes.float,
+    }
+
+    formatFloat(value){
+    	return value.toFixed(1);
+    }
+
+    render(){
+    	var value = this.formatFloat(this.props.value)
+    	return <small><span className={"eve-color-security" + value.replace(".", "")}>{value}</span></small>
+
+    }
+
+
+}

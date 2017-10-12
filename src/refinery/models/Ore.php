@@ -17,6 +17,8 @@ class Ore
     private $unitVolume;
     /** @Column(type="float") **/
     private $unitPrice;
+    /** @Column(type="float") **/
+    private $securityLevel;
     /** @Column(type="string", nullable=true) **/
     private $graphicId;
     
@@ -34,10 +36,13 @@ class Ore
    		return $this->unitVolumne;
    	}
    	public function getUnitPrice(){
-   		return $this->unitPrice();
+   		return $this->unitPrice;
    	}
+    public function getSecurityLevel(){
+      return $this->securityLevel;
+    }
     public function getGraphicId(){
-      return $this->graphicId();
+      return $this->graphicId;
     }
 
 

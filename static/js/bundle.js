@@ -507,52 +507,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (process.env.NODE_ENV !== 'production') {
-    // This branch is unreachable because this function is only called
-    // in production, but the condition is true only in development.
-    // Therefore if the branch is still here, dead code elimination wasn't
-    // properly applied.
-    // Don't change the message. React DevTools relies on it. Also make sure
-    // this message doesn't occur elsewhere in this function, or it will cause
-    // a false positive.
-    throw new Error('^_^');
-  }
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
-}
-
-if (process.env.NODE_ENV === 'production') {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = __webpack_require__(42);
-} else {
-  module.exports = __webpack_require__(45);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -573,7 +527,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -642,6 +596,52 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (process.env.NODE_ENV !== 'production') {
+    // This branch is unreachable because this function is only called
+    // in production, but the condition is true only in development.
+    // Therefore if the branch is still here, dead code elimination wasn't
+    // properly applied.
+    // Don't change the message. React DevTools relies on it. Also make sure
+    // this message doesn't occur elsewhere in this function, or it will cause
+    // a false positive.
+    throw new Error('^_^');
+  }
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (process.env.NODE_ENV === 'production') {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(42);
+} else {
+  module.exports = __webpack_require__(45);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -666,7 +666,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDom = __webpack_require__(6);
+var _reactDom = __webpack_require__(8);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2035,7 +2035,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(3);
-  var warning = __webpack_require__(8);
+  var warning = __webpack_require__(7);
   var ReactPropTypesSecret = __webpack_require__(12);
   var loggedTypeFailures = {};
 }
@@ -3375,7 +3375,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(6);
+var _reactDom = __webpack_require__(8);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -4371,7 +4371,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(6);
+var _reactDom = __webpack_require__(8);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -4414,7 +4414,7 @@ _reactDom2.default.render(_react2.default.createElement(
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(5),p=__webpack_require__(7);__webpack_require__(3);var r=__webpack_require__(4);
+var f=__webpack_require__(5),p=__webpack_require__(6);__webpack_require__(3);var r=__webpack_require__(4);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -4452,8 +4452,8 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var objectAssign$1 = __webpack_require__(5);
-var require$$0 = __webpack_require__(8);
-var emptyObject = __webpack_require__(7);
+var require$$0 = __webpack_require__(7);
+var emptyObject = __webpack_require__(6);
 var invariant = __webpack_require__(3);
 var emptyFunction = __webpack_require__(4);
 var checkPropTypes = __webpack_require__(11);
@@ -6151,7 +6151,7 @@ module.exports = ReactEntry;
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0);__webpack_require__(3);var l=__webpack_require__(13),n=__webpack_require__(5),ba=__webpack_require__(18),ca=__webpack_require__(4),da=__webpack_require__(7),ea=__webpack_require__(19),fa=__webpack_require__(20),ha=__webpack_require__(21),ia=__webpack_require__(22);
+var aa=__webpack_require__(0);__webpack_require__(3);var l=__webpack_require__(13),n=__webpack_require__(5),ba=__webpack_require__(18),ca=__webpack_require__(4),da=__webpack_require__(6),ea=__webpack_require__(19),fa=__webpack_require__(20),ha=__webpack_require__(21),ia=__webpack_require__(22);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -6481,13 +6481,13 @@ var invariant = __webpack_require__(3);
 var ExecutionEnvironment = __webpack_require__(13);
 var _assign = __webpack_require__(5);
 var EventListener = __webpack_require__(18);
-var require$$0 = __webpack_require__(8);
+var require$$0 = __webpack_require__(7);
 var hyphenateStyleName = __webpack_require__(46);
 var emptyFunction = __webpack_require__(4);
 var camelizeStyleName = __webpack_require__(48);
 var performanceNow = __webpack_require__(50);
 var propTypes = __webpack_require__(2);
-var emptyObject = __webpack_require__(7);
+var emptyObject = __webpack_require__(6);
 var checkPropTypes = __webpack_require__(11);
 var shallowEqual = __webpack_require__(19);
 var containsNode = __webpack_require__(20);
@@ -23919,7 +23919,7 @@ module.exports = performance || {};
 
 var emptyFunction = __webpack_require__(4);
 var invariant = __webpack_require__(3);
-var warning = __webpack_require__(8);
+var warning = __webpack_require__(7);
 var assign = __webpack_require__(5);
 
 var ReactPropTypesSecret = __webpack_require__(12);
@@ -25948,7 +25948,7 @@ exports.default = OreApp;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+				value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25957,7 +25957,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(6);
+var _reactDom = __webpack_require__(8);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -25970,78 +25970,116 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var OreItem = function (_React$Component) {
-	_inherits(OreItem, _React$Component);
+				_inherits(OreItem, _React$Component);
 
-	function OreItem() {
-		_classCallCheck(this, OreItem);
+				function OreItem() {
+								_classCallCheck(this, OreItem);
 
-		return _possibleConstructorReturn(this, (OreItem.__proto__ || Object.getPrototypeOf(OreItem)).apply(this, arguments));
-	}
+								return _possibleConstructorReturn(this, (OreItem.__proto__ || Object.getPrototypeOf(OreItem)).apply(this, arguments));
+				}
 
-	_createClass(OreItem, [{
-		key: 'render',
-		value: function render() {
-			var item = this.props.item;
-			var secondaryOres = this.props.item.secondaryOres;
-			var secondaryOresDisplay = secondaryOres.map(function (item) {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'small' },
-					_react2.default.createElement(
-						'span',
-						null,
-						item.name,
-						' ',
-						_react2.default.createElement(
-							'span',
-							{ className: 'float-right text-success' },
-							item.unitPrice,
-							' ISK'
-						)
-					)
-				);
-			}, this);
+				_createClass(OreItem, [{
+								key: 'render',
+								value: function render() {
+												var item = this.props.item;
+												var secondaryOres = this.props.item.secondaryOres;
+												var secondaryOresDisplay = secondaryOres.map(function (item) {
+																return _react2.default.createElement(
+																				'div',
+																				{ className: 'small' },
+																				_react2.default.createElement(
+																								'span',
+																								null,
+																								item.name,
+																								' ',
+																								_react2.default.createElement(
+																												'span',
+																												{ className: 'float-right text-success' },
+																												item.unitPrice,
+																												' ISK'
+																								)
+																				)
+																);
+												}, this);
 
-			return _react2.default.createElement(
-				'div',
-				{ className: '' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'ore-row' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'media' },
-						_react2.default.createElement('img', { className: 'd-flex mr-3', src: "/media/ore/icons/" + item.graphicId + ".png", alt: '' }),
-						_react2.default.createElement(
-							'div',
-							{ className: 'media-body' },
-							_react2.default.createElement(
-								'strong',
-								null,
-								item.name,
-								_react2.default.createElement(
-									'span',
-									{ className: 'float-right text-success' },
-									item.unitPrice,
-									' ISK'
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								null,
-								secondaryOresDisplay
-							)
-						)
-					)
-				)
-			);
-		}
-	}]);
+												return _react2.default.createElement(
+																'div',
+																{ className: '' },
+																_react2.default.createElement(
+																				'div',
+																				{ className: 'ore-row' },
+																				_react2.default.createElement(
+																								'div',
+																								{ className: 'media' },
+																								_react2.default.createElement(
+																												'span',
+																												{ className: 'd-flex' },
+																												_react2.default.createElement(SecurityLevelDisplay, { value: item.securityLevel })
+																								),
+																								_react2.default.createElement('img', { className: 'd-flex mr-3', src: "/media/ore/icons/" + item.graphicId + ".png", alt: '' }),
+																								_react2.default.createElement(
+																												'div',
+																												{ className: 'media-body' },
+																												_react2.default.createElement(
+																																'strong',
+																																null,
+																																item.name,
+																																_react2.default.createElement(
+																																				'span',
+																																				{ className: 'float-right text-success' },
+																																				item.unitPrice,
+																																				' ISK'
+																																)
+																												),
+																												_react2.default.createElement(
+																																'div',
+																																null,
+																																secondaryOresDisplay
+																												)
+																								)
+																				)
+																)
+												);
+								}
+				}]);
 
-	return OreItem;
+				return OreItem;
 }(_react2.default.Component);
 
 exports.default = OreItem;
+
+var SecurityLevelDisplay = function (_React$Component2) {
+				_inherits(SecurityLevelDisplay, _React$Component2);
+
+				function SecurityLevelDisplay() {
+								_classCallCheck(this, SecurityLevelDisplay);
+
+								return _possibleConstructorReturn(this, (SecurityLevelDisplay.__proto__ || Object.getPrototypeOf(SecurityLevelDisplay)).apply(this, arguments));
+				}
+
+				_createClass(SecurityLevelDisplay, [{
+								key: 'formatFloat',
+								value: function formatFloat(value) {
+												return value.toFixed(1);
+								}
+				}, {
+								key: 'render',
+								value: function render() {
+												var value = this.formatFloat(this.props.value);
+												return _react2.default.createElement(
+																'small',
+																null,
+																_react2.default.createElement(
+																				'span',
+																				{ className: "eve-color-security" + value.replace(".", "") },
+																				value
+																)
+												);
+								}
+				}]);
+
+				return SecurityLevelDisplay;
+}(_react2.default.Component);
 
 /***/ }),
 /* 84 */
@@ -26160,7 +26198,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(6);
+var _reactDom = __webpack_require__(8);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -26387,7 +26425,7 @@ var _createReactClass = __webpack_require__(89);
 
 var _createReactClass2 = _interopRequireDefault(_createReactClass);
 
-var _reactDom = __webpack_require__(6);
+var _reactDom = __webpack_require__(8);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -26578,11 +26616,11 @@ module.exports = factory(
 
 var _assign = __webpack_require__(5);
 
-var emptyObject = __webpack_require__(7);
+var emptyObject = __webpack_require__(6);
 var _invariant = __webpack_require__(3);
 
 if (process.env.NODE_ENV !== 'production') {
-  var warning = __webpack_require__(8);
+  var warning = __webpack_require__(7);
 }
 
 var MIXINS_KEY = 'mixins';
