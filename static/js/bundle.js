@@ -25956,7 +25956,7 @@ exports.default = OreApp;
 
 
 Object.defineProperty(exports, "__esModule", {
-				value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25978,115 +25978,156 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var OreItem = function (_React$Component) {
-				_inherits(OreItem, _React$Component);
+    _inherits(OreItem, _React$Component);
 
-				function OreItem() {
-								_classCallCheck(this, OreItem);
+    function OreItem() {
+        _classCallCheck(this, OreItem);
 
-								return _possibleConstructorReturn(this, (OreItem.__proto__ || Object.getPrototypeOf(OreItem)).apply(this, arguments));
-				}
+        return _possibleConstructorReturn(this, (OreItem.__proto__ || Object.getPrototypeOf(OreItem)).apply(this, arguments));
+    }
 
-				_createClass(OreItem, [{
-								key: 'render',
-								value: function render() {
-												var item = this.props.item;
-												var secondaryOres = this.props.item.secondaryOres;
-												var secondaryOresDisplay = secondaryOres.map(function (item) {
-																return _react2.default.createElement(
-																				'div',
-																				{ className: 'small' },
-																				_react2.default.createElement(
-																								'span',
-																								null,
-																								item.name,
-																								' ',
-																								_react2.default.createElement(
-																												'span',
-																												{ className: 'float-right text-success' },
-																												item.unitPrice,
-																												' ISK'
-																								)
-																				)
-																);
-												}, this);
+    _createClass(OreItem, [{
+        key: 'render',
+        value: function render() {
+            var item = this.props.item;
+            var secondaryOres = this.props.item.secondaryOres;
+            var secondaryOresDisplay = secondaryOres.map(function (item) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'small' },
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        item.name,
+                        ' ',
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'float-right text-success' },
+                            item.unitPrice,
+                            ' ISK'
+                        )
+                    )
+                );
+            }, this);
 
-												return _react2.default.createElement(
-																'div',
-																{ className: '' },
-																_react2.default.createElement(
-																				'div',
-																				{ className: 'ore-row' },
-																				_react2.default.createElement(
-																								'div',
-																								{ className: 'media' },
-																								_react2.default.createElement(
-																												'span',
-																												{ className: 'd-flex' },
-																												_react2.default.createElement(SecurityLevelDisplay, { value: item.securityLevel })
-																								),
-																								_react2.default.createElement('img', { className: 'd-flex mr-3', src: "/media/ore/icons/" + item.graphicId + ".png", alt: '' }),
-																								_react2.default.createElement(
-																												'div',
-																												{ className: 'media-body' },
-																												_react2.default.createElement(
-																																'strong',
-																																null,
-																																item.name,
-																																_react2.default.createElement(
-																																				'span',
-																																				{ className: 'float-right text-success' },
-																																				item.unitPrice,
-																																				' ISK'
-																																)
-																												),
-																												_react2.default.createElement(
-																																'div',
-																																null,
-																																secondaryOresDisplay
-																												)
-																								)
-																				)
-																)
-												);
-								}
-				}]);
+            var mineralDisplay = item.reprocessedMinerals.map(function (item) {
+                return _react2.default.createElement(MineralDisplay, { value: item.reprocessingEfficiency, item: item.mineral });
+            }, this);
 
-				return OreItem;
+            return _react2.default.createElement(
+                'div',
+                { className: '' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'ore-row' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'media' },
+                        _react2.default.createElement(
+                            'span',
+                            { className: 'd-flex' },
+                            _react2.default.createElement(SecurityLevelDisplay, { value: item.securityLevel })
+                        ),
+                        _react2.default.createElement('img', { className: 'd-flex mr-3', src: "/media/ore/icons/" + item.graphicId + ".png", alt: '' }),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'media-body' },
+                            _react2.default.createElement(
+                                'strong',
+                                null,
+                                item.name,
+                                _react2.default.createElement(
+                                    'span',
+                                    { className: 'float-right text-success' },
+                                    item.unitPrice,
+                                    ' ISK'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                secondaryOresDisplay
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement('i', { className: 'fa fa-recycle fa-lg' }),
+                        ' - ',
+                        mineralDisplay
+                    )
+                )
+            );
+        }
+    }]);
+
+    return OreItem;
 }(_react2.default.Component);
 
 exports.default = OreItem;
 
 var SecurityLevelDisplay = function (_React$Component2) {
-				_inherits(SecurityLevelDisplay, _React$Component2);
+    _inherits(SecurityLevelDisplay, _React$Component2);
 
-				function SecurityLevelDisplay() {
-								_classCallCheck(this, SecurityLevelDisplay);
+    function SecurityLevelDisplay() {
+        _classCallCheck(this, SecurityLevelDisplay);
 
-								return _possibleConstructorReturn(this, (SecurityLevelDisplay.__proto__ || Object.getPrototypeOf(SecurityLevelDisplay)).apply(this, arguments));
-				}
+        return _possibleConstructorReturn(this, (SecurityLevelDisplay.__proto__ || Object.getPrototypeOf(SecurityLevelDisplay)).apply(this, arguments));
+    }
 
-				_createClass(SecurityLevelDisplay, [{
-								key: 'formatFloat',
-								value: function formatFloat(value) {
-												return value.toFixed(1);
-								}
-				}, {
-								key: 'render',
-								value: function render() {
-												var value = this.formatFloat(this.props.value);
-												return _react2.default.createElement(
-																'small',
-																null,
-																_react2.default.createElement(
-																				'span',
-																				{ className: "eve-color-security" + value.replace(".", "") },
-																				value
-																)
-												);
-								}
-				}]);
+    _createClass(SecurityLevelDisplay, [{
+        key: 'formatFloat',
+        value: function formatFloat(value) {
+            return value.toFixed(1);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var value = this.formatFloat(this.props.value);
+            return _react2.default.createElement(
+                'small',
+                null,
+                _react2.default.createElement(
+                    'span',
+                    { className: "eve-color-security" + value.replace(".", "") },
+                    value
+                )
+            );
+        }
+    }]);
 
-				return SecurityLevelDisplay;
+    return SecurityLevelDisplay;
+}(_react2.default.Component);
+
+var MineralDisplay = function (_React$Component3) {
+    _inherits(MineralDisplay, _React$Component3);
+
+    function MineralDisplay() {
+        _classCallCheck(this, MineralDisplay);
+
+        return _possibleConstructorReturn(this, (MineralDisplay.__proto__ || Object.getPrototypeOf(MineralDisplay)).apply(this, arguments));
+    }
+
+    _createClass(MineralDisplay, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'span',
+                { className: "badge badge-primary badge-labeled mr-1 badge-mineral-" + this.props.item.id },
+                _react2.default.createElement('img', { className: 'badge-icon', src: "/media/minerals/icons/" + this.props.item.id + ".png", alt: '' }),
+                this.props.item.name,
+                ' ',
+                _react2.default.createElement(
+                    'i',
+                    null,
+                    this.props.value
+                )
+            );
+        }
+    }]);
+
+    return MineralDisplay;
 }(_react2.default.Component);
 
 /***/ }),
@@ -26420,7 +26461,7 @@ var MineralFilter = function (_React$Component3) {
                 { className: 'mr-2' },
                 _react2.default.createElement(
                     'span',
-                    { className: "badge badge-primary badge-bordered " + notSelected, onClick: this.handleClick },
+                    { className: "badge badge-primary badge-bordered badge-mineral-" + mineral.id + " " + notSelected, onClick: this.handleClick },
                     _react2.default.createElement('img', { className: 'badge-icon', src: "/media/minerals/icons/" + mineral.id + ".png", alt: '' }),
                     mineral.name,
                     ' '

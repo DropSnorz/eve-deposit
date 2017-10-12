@@ -21,7 +21,18 @@ class Ore
     private $securityLevel;
     /** @Column(type="string", nullable=true) **/
     private $graphicId;
+
+    /**
+     * One Ore has Many Minerals.
+     * @OneToMany(targetEntity="OreMineral", mappedBy="ore")
+     */
+    private $reprocessedMinerals;
     
+
+    public function __construct() {
+        $this->reprocessedMinerals = new ArrayCollection();
+    }
+
 
    	public function getId(){
    		return $this->id;
@@ -43,6 +54,9 @@ class Ore
     }
     public function getGraphicId(){
       return $this->graphicId;
+    }
+    public function getReprocessedMinerals(){
+      return $this->reprocessedMinerals;
     }
 
 

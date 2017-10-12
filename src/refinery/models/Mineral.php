@@ -15,6 +15,18 @@ class Mineral
     /** @Column(type="float") **/
     private $unitPrice;
 
+    /**
+     * One Mineral has Many OreSources.
+     * @OneToMany(targetEntity="OreMineral", mappedBy="mineral")
+     */
+    private $oreSources;
+
+
+    public function __construct() {
+        $this->oreSources = new ArrayCollection();
+    }
+
+
    	public function getId(){
    		return $this->id;
    	}
@@ -28,7 +40,10 @@ class Mineral
    		return $this->unitVolumne;
    	}
    	public function getUnitPrice(){
-   		return $this->unitPrice();
+   		return $this->unitPrice;
    	}
+    public function getOreSources(){
+      return $this->oreSources;
+    }
 
 }
