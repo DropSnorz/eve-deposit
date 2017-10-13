@@ -13,8 +13,12 @@ class RefineryController extends BaseController{
 		$minerals = $em->getRepository("Mineral")->findAllAsArray();
 		$minerals_json = json_encode($minerals);
 
+		$oreMineral = $em->getRepository("OreMineral")->findAllReprocessingStats();
+		$oreMineral_json = json_encode($oreMineral);
+
 		$data = ["primaryOresData" => $primaryOres_json,
-				"mineralsData" => $minerals_json];
+				"mineralsData" => $minerals_json,
+				"oreMineralData" => $oreMineral_json];
 		$content = $this->render('home', $data);
 		$this->response->setContent($content);
 	}

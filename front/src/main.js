@@ -15,7 +15,7 @@ let store = createStore(refineryApp, initialState);
 
 ReactDOM.render(
 	<Provider store={store}>
-		<OreApp mineralList = {minerals} oreList = {primaryOres} />
+		<OreApp mineralList = {minerals} oreList = {primaryOres} reprocessingStats={reprocessingStats} />
 	</Provider>
 	, document.getElementById('ore-component'));
 

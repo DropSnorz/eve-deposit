@@ -13,6 +13,21 @@ class OreRepository extends EntityRepository{
        
 	}
 
+	public function findAllReprocessedMineral(){
+	   $dql = "SELECT om FROM OreMineral om";
+       $query = $this->getEntityManager()->createQuery($dql);
+
+       return $query->getArrayResult();
+	}
+
+
+	public function findAllReprocessingStats(){
+	   $dql = "SELECT MAX(om.reprocessingEfficiency) , MIN(om.reprocessingEfficiency) FROM OreMineral om GROUP BY om.mineral";
+       $query = $this->getEntityManager()->createQuery($dql);
+
+       return $query->getArrayResult();
+	}
+
 
 }
 

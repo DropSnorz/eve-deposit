@@ -15,7 +15,7 @@ export default class OreItem extends React.Component {
 		}, this);
 
   	var mineralDisplay = item.reprocessedMinerals.map(function(item){
-  		return <MineralDisplay value={item.reprocessingEfficiency} item = {item.mineral} />
+  		return <MineralDisplay value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
   	}, this)
 
     return 	<div className="">
@@ -62,10 +62,18 @@ class MineralDisplay extends React.Component{
 	propTypes: {
 		item: PropTypes.object,
         value: PropTypes.float,
+        //reprocessingStats
     }
 
     render(){
-    	return <span className={"badge badge-primary badge-labeled mr-1 badge-mineral-" + this.props.item.id}>
+      var max = this.props.reprocessingStats[this.props.item.id - 1]["1"];
+      var min = this.props.reprocessingStats[this.props.item.id - 1]["2"];
+
+      var average = 1
+      if(max-min != 0) average = (this.props.value - min) / (max-min);
+      if(average < 0.3) average = 0.3;
+
+    	return <span className={"badge badge-primary badge-labeled mr-1 badge-mineral-" + this.props.item.id} style={{opacity: average}} >
     		<img className="badge-icon" src={"/media/minerals/icons/" + this.props.item.id + ".png"} alt="" /> 
     		{this.props.item.name} <i>{this.props.value}</i>
     	</span>

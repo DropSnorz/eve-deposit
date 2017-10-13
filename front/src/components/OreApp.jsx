@@ -13,7 +13,7 @@ class OreApp extends React.Component {
     			</div>
 
     			<div>
-    				<VisibleOreList oreList={this.props.oreList} />
+    				<VisibleOreList oreList={this.props.oreList} reprocessingStats={this.props.reprocessingStats} />
     			</div>
 
     		</div>
