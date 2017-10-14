@@ -14,3 +14,10 @@ export const setOreSecurityLevelFilter = securityFilter =>{
 	}
 }
 
+export const triggerToggleMineralFilter = filter =>{
+	return{
+		type:'TOGGLE_MINERAL_FILTER',
+		filter
+	}
+}
+

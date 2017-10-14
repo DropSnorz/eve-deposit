@@ -6,9 +6,11 @@ import OreNameSelect from './OreNameSelect.jsx';
 class OreFilter extends React.Component {
     propTypes:{
         onNameFilterChange: PropTypes.func,
-        onSecurityLevelFilterChange: PropTypes.func
+        onSecurityLevelFilterChange: PropTypes.func,
+        onMineralFilterChange: PropTypes.func
         //nameFilters: array
         //securityLevelFilter : string
+        //mineralFilters
     }
 
     constructor(props) {
@@ -26,7 +28,7 @@ class OreFilter extends React.Component {
 
     var minerals = this.props.mineralList.map(function (item) {
             return (
-                <MineralFilter item={item} />
+                <MineralFilter item={item} mineralFilters={this.props.mineralFilters} onMineralFilterChange={this.props.onMineralFilterChange}/>
             );
     }, this);
 
@@ -96,20 +98,25 @@ class MineralFilter extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {selected: false};
         this.handleClick = this.handleClick.bind(this);
     }
 
+    propTypes:{
+        item: PropTypes.object,
+        onMineralFilterChange: PropTypes.func
+        //mineralFilters: array
+
+    }
+
     handleClick(e){
-            this.setState(prevState => ({
-                selected: !prevState.selected
-        }));
+        this.props.onMineralFilterChange(this.props.item.id)
     }
 
     render(){
         var mineral = this.props.item;
         var notSelected = "";
-        if(!this.state.selected){
+
+        if(this.props.mineralFilters.indexOf(mineral.id) < 0){
             notSelected = "badge-transparent";
         }
         return <span className="mr-2">

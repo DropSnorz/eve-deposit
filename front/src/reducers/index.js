@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import {oreNameVisibilityFilter} from './oreVisibilityFilter.js'
 import {oreSecurityLevelFilter} from './oreVisibilityFilter.js'
+import {toggleMineralFilter} from './oreVisibilityFilter.js'
 
 
 
@@ -13,7 +14,8 @@ import {oreSecurityLevelFilter} from './oreVisibilityFilter.js'
 
 const refineryApp = combineReducers({
   oreNameVisibilityFilter,
-  oreSecurityLevelFilter
+  oreSecurityLevelFilter,
+  mineralFilters: toggleMineralFilter
 
 })
 

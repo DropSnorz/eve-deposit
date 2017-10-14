@@ -5,6 +5,7 @@ const getVisibleOreList = (oreList, state) => {
     
   var nameFilters = state.oreNameVisibilityFilter;
   var securityLevelFilter = state.oreSecurityLevelFilter;
+  var mineralFilters = state.mineralFilters;
 
   var filteredOre = oreList;
 
@@ -29,6 +30,24 @@ const getVisibleOreList = (oreList, state) => {
       }
     })
   }
+  if(mineralFilters.length > 0){
+    filteredOre = filteredOre.filter(function(oreItem){
+    for(var j = 0; j <  mineralFilters.length; j++){
+      var mineralFilter = mineralFilters[j]
+      for(var i = 0; i < oreItem.reprocessedMinerals.length; i++){
+        var reprocess = oreItem.reprocessedMinerals[i]
+        if(mineralFilter == reprocess.mineral.id){
+          return true;
+        }
+      }
+    }
+
+    return false;
+    });
+
+  }
+
+
 
 
   return filteredOre;
