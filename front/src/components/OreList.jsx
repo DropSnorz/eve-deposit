@@ -14,9 +14,15 @@ export default class OreList extends React.Component {
 				);
 		}, this);
 
-    return <div className="ore-list mt-4">
-      	{list}
+    return (
+      <div>
+       <span className="float-right"><small data-toggle="tooltip" data-placement="left" title="Prices pulled from Jita market after daily maintenance" id="price-info">Ore price (10m2) <i className="fa fa-sort-desc"></i></small></span>
+        <hr />
+        <div className="ore-list mt-4">
+        	{list}
+        </div>
       </div>
+      )
     
   }
 }

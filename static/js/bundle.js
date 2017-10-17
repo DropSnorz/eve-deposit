@@ -3412,8 +3412,23 @@ var OreList = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'ore-list mt-4' },
-        list
+        null,
+        _react2.default.createElement(
+          'span',
+          { className: 'float-right' },
+          _react2.default.createElement(
+            'small',
+            { 'data-toggle': 'tooltip', 'data-placement': 'left', title: 'Prices pulled from Jita market after daily maintenance', id: 'price-info' },
+            'Ore price (10m2) ',
+            _react2.default.createElement('i', { className: 'fa fa-sort-desc' })
+          )
+        ),
+        _react2.default.createElement('hr', null),
+        _react2.default.createElement(
+          'div',
+          { className: 'ore-list mt-4' },
+          list
+        )
       );
     }
   }]);
@@ -26016,6 +26031,8 @@ var OreItem = function (_React$Component) {
             var item = this.props.item;
             var secondaryOres = this.props.item.secondaryOres;
             var secondaryOresDisplay = secondaryOres.map(function (item) {
+                var price = formatFloatPrice(parseFloat(item.normalizedPrice));
+
                 return _react2.default.createElement(
                     'div',
                     { className: 'small' },
@@ -26027,7 +26044,7 @@ var OreItem = function (_React$Component) {
                         _react2.default.createElement(
                             'span',
                             { className: 'float-right text-success' },
-                            item.unitPrice,
+                            price,
                             ' ISK'
                         )
                     )
@@ -26037,6 +26054,8 @@ var OreItem = function (_React$Component) {
             var mineralDisplay = item.reprocessedMinerals.map(function (item) {
                 return _react2.default.createElement(MineralDisplay, { value: item.reprocessingEfficiency, item: item.mineral, reprocessingStats: this.props.reprocessingStats });
             }, this);
+
+            var price = formatFloatPrice(parseFloat(item.normalizedPrice));
 
             return _react2.default.createElement(
                 'div',
@@ -26063,7 +26082,7 @@ var OreItem = function (_React$Component) {
                                 _react2.default.createElement(
                                     'span',
                                     { className: 'float-right text-success' },
-                                    item.unitPrice,
+                                    price,
                                     ' ISK'
                                 )
                             ),

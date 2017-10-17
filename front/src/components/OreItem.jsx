@@ -7,9 +7,11 @@ export default class OreItem extends React.Component {
   	var item = this.props.item;
   	var secondaryOres = this.props.item.secondaryOres;
   	var secondaryOresDisplay = secondaryOres.map(function (item) {
+      var price = formatFloatPrice(parseFloat(item.normalizedPrice));
+
 		return (
 			<div className="small">
-			<span>{item.name} <span className="float-right text-success">{item.unitPrice} ISK</span></span>
+			<span>{item.name} <span className="float-right text-success">{price} ISK</span></span>
 			</div>
 			);
 		}, this);
@@ -18,6 +20,9 @@ export default class OreItem extends React.Component {
   		return <MineralDisplay value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
   	}, this)
 
+    var price = formatFloatPrice(parseFloat(item.normalizedPrice));
+
+
     return 	<div className="">
     			<div className="ore-row">
 		    		<div className="media">
@@ -25,7 +30,7 @@ export default class OreItem extends React.Component {
 		    			<img className="d-flex mr-3" src={"/media/ore/icons/" + item.graphicId + ".png"} alt="" />
 			    		<div className="media-body">
 			    			<strong>
-			    				{item.name}<span className="float-right text-success">{item.unitPrice} ISK</span>
+			    				{item.name}<span className="float-right text-success">{price} ISK</span>
 			    			</strong>
 			    			<div>
 			    				{secondaryOresDisplay}

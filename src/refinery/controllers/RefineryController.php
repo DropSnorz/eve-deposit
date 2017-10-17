@@ -31,7 +31,11 @@ class RefineryController extends BaseController{
 		$ores = $em->getRepository("Ore")->findAll();
 
 		foreach ($ores as $ore) {
-			$ore->setUnitPrice(ESIApiService::getLatestItemPrice($ore->getRef()));
+			$unitPrice = ESIApiService::getLatestItemPrice($ore->getRef());
+			$ore->setUnitPrice($unitPrice);
+			$normalizedPrice = $unitPrice * (10 / $ore->getUnitVolume());
+			$normalizedPrice = floor($normalizedPrice * 100) / 100;
+			$ore->setNormalizedPrice($normalizedPrice);
 		}
 
 		$em->flush();

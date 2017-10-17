@@ -17,6 +17,8 @@ class Ore
     private $unitVolume;
     /** @Column(type="float") **/
     private $unitPrice;
+    /** @Column(type="float", nullable = true) **/
+    private $normalizedPrice;
     /** @Column(type="float") **/
     private $securityLevel;
     /** @Column(type="string", nullable=true) **/
@@ -44,7 +46,7 @@ class Ore
    		return $this->ref;
    	}
    	public function getUnitVolume(){
-   		return $this->unitVolumne;
+   		return $this->unitVolume;
    	}
    	public function getUnitPrice(){
    		return $this->unitPrice;
@@ -60,6 +62,12 @@ class Ore
     }
     public function getReprocessedMinerals(){
       return $this->reprocessedMinerals;
+    }
+    public function getNormalizedPrice(){
+      return $this->normalizedPrice;
+    }
+    public function setNormalizedPrice($np){
+      $this->normalizedPrice = $np;
     }
 
 
