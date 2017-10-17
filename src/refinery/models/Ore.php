@@ -49,6 +49,9 @@ class Ore
    	public function getUnitPrice(){
    		return $this->unitPrice;
    	}
+    public function setUnitPrice($unitPrice){
+      $this->unitPrice = $unitPrice;
+    }
     public function getSecurityLevel(){
       return $this->securityLevel;
     }

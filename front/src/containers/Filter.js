@@ -5,7 +5,6 @@ import { triggerToggleMineralFilter } from '../actions'
 import OreFilter from '../components/OreFilter.jsx'
 
 const mapStateToProps = state => {
-  console.log(state.mineralFilters)
   return {
      nameFilters : state.oreNameVisibilityFilter,
      securityLevelFilter: state.oreSecurityLevelFilter,

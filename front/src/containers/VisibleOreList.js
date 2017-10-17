@@ -47,9 +47,6 @@ const getVisibleOreList = (oreList, state) => {
 
   }
 
-
-
-
   return filteredOre;
 }
 

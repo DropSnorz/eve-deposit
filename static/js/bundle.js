@@ -26259,7 +26259,6 @@ var _OreFilter2 = _interopRequireDefault(_OreFilter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-  console.log(state.mineralFilters);
   return {
     nameFilters: state.oreNameVisibilityFilter,
     securityLevelFilter: state.oreSecurityLevelFilter,

@@ -1,5 +1,6 @@
 <?php
 require_once DIR_CORE . "services/AuthentificationService.php";
+require_once DIR_REFINERY . "services/ESIApiService.php";
 
 class RefineryController extends BaseController{
 
@@ -21,5 +22,23 @@ class RefineryController extends BaseController{
 				"oreMineralData" => $oreMineral_json];
 		$content = $this->render('home', $data);
 		$this->response->setContent($content);
+	}
+
+	function fetchMarketPrices(){
+
+
+		$em = getEntityManager();
+		$ores = $em->getRepository("Ore")->findAll();
+
+		foreach ($ores as $ore) {
+			$ore->setUnitPrice(ESIApiService::getLatestItemPrice($ore->getRef()));
+		}
+
+		$em->flush();
+
+		$content="Success";
+		$this->response->setContent($content);
+
+
 	}
 }
