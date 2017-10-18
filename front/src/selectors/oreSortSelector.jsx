@@ -5,16 +5,26 @@ const getOreList = (state, props) => props.oreList
 const getMineralFilters = (state, props) => state.mineralFilters
 
 
-export const sortOreList = createSelector(
-  [ getOreList, getSortParameter, getMineralFilters ],
-  (oreList, sortParameter, mineralFilters) => {
+const lightSortOreList = createSelector(
+  [ getOreList, getSortParameter ],
+  (oreList, sortParameter) =>{
     switch (sortParameter) {
       case 'SELL_PRICE':
         return oreList.concat().sort(compareOreSellPrice)
-      case 'MINERALS':
-        return oreList.concat().sort(compareOreMinerals(mineralFilters))
       case 'SECURITY':
         return oreList.concat().sort(compareSecurityLevel)
+      default:
+        return oreList
+      }
+  })
+
+
+export const sortOreList = createSelector(
+  [ lightSortOreList, getSortParameter, getMineralFilters ],
+  (oreList, sortParameter, mineralFilters) => {
+    switch (sortParameter) {
+      case 'MINERALS':
+        return oreList.concat().sort(compareOreMinerals(mineralFilters))
       default:
         return oreList
     }
