@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import OreNameSelect from './OreNameSelect.jsx';
+import OreSortSelect from './OreSortSelect.jsx';
 
 class OreFilter extends React.Component {
     propTypes:{
         onNameFilterChange: PropTypes.func,
         onSecurityLevelFilterChange: PropTypes.func,
+        onSortParameterChange: PropTypes.func,
         onMineralFilterChange: PropTypes.func
         //nameFilters: array
         //securityLevelFilter : string
+        //sortParameter : string
         //mineralFilters
     }
 
@@ -18,10 +21,10 @@ class OreFilter extends React.Component {
         this.handleNameFilterChanges = this.handleNameFilterChanges.bind(this);
     }
   
-  handleNameFilterChanges(value){
+    handleNameFilterChanges(value){
 
-      this.props.onNameFilterChange(value);
-  }
+        this.props.onNameFilterChange(value);
+    }
 
   render() {
 
@@ -48,10 +51,10 @@ class OreFilter extends React.Component {
                             </div>                       
                         </div>
                         <div className="col-md-4">
-                            <select className="form-control">
-                                <option> Sell Profits </option>
-                                <option> Refinery Profits </option>
-                            </select>
+                            <OreSortSelect
+                                onSelectChange = {this.props.onSortParameterChange}
+                                value={this.props.sortParameter} 
+                             />
                         </div>
                     </div>
 		    	</form>

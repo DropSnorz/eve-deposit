@@ -14,6 +14,13 @@ export const setOreSecurityLevelFilter = securityFilter =>{
 	}
 }
 
+export const setOreSortParameter = parameter =>{
+	return {
+		type:'SET_SORT_PARAMETER',
+		parameter
+	}
+}
+
 export const triggerToggleMineralFilter = filter =>{
 	return{
 		type:'TOGGLE_MINERAL_FILTER',

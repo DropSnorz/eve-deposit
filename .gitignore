@@ -3,3 +3,4 @@ vendor/**
 tests/_log/*
 node_modules/**
 db/data.sqlite
+static/js/bundle.js

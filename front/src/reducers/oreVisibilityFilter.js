@@ -19,6 +19,17 @@ export const oreSecurityLevelFilter = (state="ALL", action) => {
 	}
 }
 
+
+export const oreSortParameter = (state="SELL_PRICE", action) => {
+	switch(action.type){
+		case 'SET_SORT_PARAMETER':
+			return action.parameter
+		default:
+			return state
+	}
+}
+
+
 export const toggleMineralFilter = (state = [], action) => {
 	switch(action.type){
 		case 'TOGGLE_MINERAL_FILTER':{

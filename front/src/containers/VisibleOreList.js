@@ -1,5 +1,7 @@
 import { connect } from 'react-redux'
 import OreList from '../components/OreList.jsx'
+import { sortOreList } from '../selectors/oreSortSelector.jsx'
+
 
 const getVisibleOreList = (oreList, state) => {
     
@@ -51,8 +53,10 @@ const getVisibleOreList = (oreList, state) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    var customOreList = sortOreList(state, ownProps)
+    customOreList = getVisibleOreList(customOreList, state)
   return {
-    oreList: getVisibleOreList(ownProps.oreList, state)
+    oreList: customOreList
   }
 }
 
