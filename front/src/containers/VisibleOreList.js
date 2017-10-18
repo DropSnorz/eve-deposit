@@ -36,15 +36,18 @@ const getVisibleOreList = (oreList, state) => {
     filteredOre = filteredOre.filter(function(oreItem){
     for(var j = 0; j <  mineralFilters.length; j++){
       var mineralFilter = mineralFilters[j]
+      var result = false;
       for(var i = 0; i < oreItem.reprocessedMinerals.length; i++){
         var reprocess = oreItem.reprocessedMinerals[i]
         if(mineralFilter == reprocess.mineral.id){
-          return true;
+          result = true;
         }
       }
+
+      if(!result) return false;
     }
 
-    return false;
+    return true;
     });
 
   }
