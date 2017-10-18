@@ -10,7 +10,7 @@ export default class OreList extends React.Component {
   	var list = oreList.map(function (item) {
 				return (
 					<OreItem
-						item={item} reprocessingStats={reprocessingStats} />
+						key={item.id} item={item} reprocessingStats={reprocessingStats} />
 				);
 		}, this);
 

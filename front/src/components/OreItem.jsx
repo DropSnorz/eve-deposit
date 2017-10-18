@@ -10,14 +10,14 @@ export default class OreItem extends React.Component {
       var price = formatFloatPrice(parseFloat(item.normalizedPrice));
 
 		return (
-			<div className="small">
-			<span>{item.name} <span className="float-right text-success">{price} ISK</span></span>
+			<div key={item.id} className="small">
+			 <span>{item.name} <span className="float-right text-success">{price} ISK</span></span>
 			</div>
 			);
 		}, this);
 
   	var mineralDisplay = item.reprocessedMinerals.map(function(item){
-  		return <MineralDisplay value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
+  		return <MineralDisplay key={item.id} value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
   	}, this)
 
     var price = formatFloatPrice(parseFloat(item.normalizedPrice));

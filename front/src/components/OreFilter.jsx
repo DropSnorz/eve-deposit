@@ -31,7 +31,7 @@ class OreFilter extends React.Component {
 
     var minerals = this.props.mineralList.map(function (item) {
             return (
-                <MineralFilter item={item} mineralFilters={this.props.mineralFilters} onMineralFilterChange={this.props.onMineralFilterChange}/>
+                <MineralFilter key={item.id} item={item} mineralFilters={this.props.mineralFilters} onMineralFilterChange={this.props.onMineralFilterChange}/>
             );
     }, this);
 
