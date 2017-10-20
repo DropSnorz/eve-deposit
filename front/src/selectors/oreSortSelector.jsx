@@ -11,7 +11,7 @@ const lightSortOreList = createSelector(
     switch (sortParameter) {
       case 'SELL_PRICE':
         return oreList.concat().sort(compareOreSellPrice)
-      case 'SECURITY':
+      case 'SECURITY_LEVEL':
         return oreList.concat().sort(compareSecurityLevel)
       default:
         return oreList

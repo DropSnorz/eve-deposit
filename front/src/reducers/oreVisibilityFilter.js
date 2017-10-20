@@ -20,7 +20,7 @@ export const oreSecurityLevelFilter = (state="ALL", action) => {
 }
 
 
-export const oreSortParameter = (state="SELL_PRICE", action) => {
+export const oreSortParameter = (state="SECURITY_LEVEL", action) => {
 	switch(action.type){
 		case 'SET_SORT_PARAMETER':
 			return action.parameter

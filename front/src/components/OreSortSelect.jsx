@@ -7,7 +7,7 @@ import Select from 'react-select';
 
 const selectList = [{value:"SELL_PRICE" , label:"Sell Price" , icon:"fa fa-money" },
                       {value:"MINERALS" , label:"Minerals" , icon:"fa fa-recycle" },
-                      {value:"SECURITY" , label:"Security" , icon:"fa fa-shield" } ];
+                      {value:"SECURITY_LEVEL" , label:"Security" , icon:"fa fa-shield" } ];
 
 const SortValue = createClass({
     propTypes: {

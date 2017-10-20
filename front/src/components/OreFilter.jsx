@@ -123,7 +123,7 @@ class MineralFilter extends React.Component{
             notSelected = "badge-transparent";
         }
         return <span className="mr-2">
-                <span className={"badge badge-primary badge-bordered badge-mineral-"+ mineral.id + " " + notSelected } onClick={this.handleClick}>
+                <span className={"badge badge-primary badge-bordered badge-mineral-"+ mineral.id + " " + notSelected } onClick={this.handleClick} style={{cursor: "pointer"}}>
                     <img className="badge-icon" src={"/media/minerals/icons/" + mineral.id  + ".png"} alt="" />{mineral.name} </span>
                 </span>
     }
