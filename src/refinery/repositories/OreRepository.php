@@ -1,15 +1,16 @@
 <?php
-
+use Doctrine\Common\Collections;
 use Doctrine\ORM\EntityRepository;
 
 class OreRepository extends EntityRepository{
 
 	public function findAllPrimaryOreSecondaryRelated()
 	{
-	   $dql = "SELECT p, s, pom, m FROM PrimaryOre p JOIN p.secondaryOres s LEFT JOIN p.reprocessedMinerals pom LEFT JOIN pom.mineral m";
+	   $dql = "SELECT p, s, pom, m FROM PrimaryOre p JOIN p.secondaryOres s LEFT JOIN p.reprocessedMinerals pom LEFT JOIN pom.mineral m ORDER By p.normalizedPrice DESC";
        $query = $this->getEntityManager()->createQuery($dql);
 
        return $query->getArrayResult();
+       
        
 	}
 
@@ -26,6 +27,22 @@ class OreRepository extends EntityRepository{
        $query = $this->getEntityManager()->createQuery($dql);
 
        return $query->getArrayResult();
+	}
+
+	public function findBestHSOre(){
+
+	   $dql = "SELECT o FROM PrimaryOre o WHERE o.securityLevel > 0.4  ORDER By o.normalizedPrice DESC";
+       $query = $this->getEntityManager()->createQuery($dql)->setMaxResults(1);
+
+       return $query->getSingleResult();
+
+	}
+
+	public function findBestLSOre(){
+	   $dql = "SELECT o FROM PrimaryOre o ORDER By o.normalizedPrice DESC";
+       $query = $this->getEntityManager()->createQuery($dql)->setMaxResults(1);
+
+       return $query->getSingleResult();
 	}
 
 

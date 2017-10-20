@@ -60,40 +60,40 @@
                 <div class="col-md-6 mb-4">
                   <div class="mb-2">
                     <span class="badge badge-info badge-labeled">
-                      High Sec <i>0.7</i>
+                      High Sec <i>{{bestHSOre.securityLevel}}</i>
                     </span>
                   </div>
-                  <img src="/media/ore/icons/default.png">
+                  <img src="/media/ore/icons/{{bestHSOre.graphicId}}.png">
                   <div class="mt-3">
-                    <div>Ore name</div>
-                    <span class="text-success">20.000 ISK</span>
+                    <div>{{bestHSOre.name}}</div>
+                    <span class="text-success">{{bestHSOre.normalizedPrice|number_format(2, ',', ' ')}} ISK</span>
                   </div>
                   <div>
                     <span>
                       <i class="fa fa-lg fa-recycle"></i> - 
-                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
-                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
-                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
+                      {% for reprocess in bestHSOre.reprocessedMinerals %}
+                      <img class="mineral-icon" src="/media/minerals/icons/{{reprocess.mineral.id}}.png" data-toggle="tooltip" data-placement="bottom" title="{{reprocess.mineral.name}}"/>
+                      {% endfor %}
                     </span>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="mb-2">
                     <span class="badge badge-danger badge-labeled">
-                      Low Sec <i>0.1</i>
+                      Low Sec <i>{{bestLSOre.securityLevel}}</i>
                     </span>
                   </div>
-                  <img src="/media/ore/icons/default.png">
+                  <img src="/media/ore/icons/{{bestLSOre.graphicId}}.png">
                   <div class="mt-3">
-                    <div>Ore name</div>
-                    <span class="text-success">20.000 ISK</span>
+                    <div>{{bestLSOre.name}}</div>
+                    <span class="text-success">{{bestLSOre.normalizedPrice|number_format(2, ',', ' ')}} ISK</span>
                   </div>
                   <div>
                     <span>
                       <i class="fa fa-lg fa-recycle"></i> - 
-                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
-                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
-                      <img class="mineral-icon" src="/media/minerals/icons/default.png" data-toggle="tooltip" data-placement="bottom" title="Mexallon"/>
+                      {% for reprocess in bestLSOre.reprocessedMinerals %}
+                      <img class="mineral-icon" src="/media/minerals/icons/{{reprocess.mineral.id}}.png" data-toggle="tooltip" data-placement="bottom" title="{{reprocess.mineral.name}}"/>
+                      {% endfor %}
                     </span>
                   </div>
                 </div>

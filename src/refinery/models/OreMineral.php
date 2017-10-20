@@ -14,7 +14,7 @@ class OreMineral
     private $ore;
    	/**
      * Many OreMineral have One Mineral.
-     * @ManyToOne(targetEntity="Mineral", inversedBy="sourceOres")
+     * @ManyToOne(targetEntity="Mineral", inversedBy="oreSources")
      * @JoinColumn(name="mineral_id", referencedColumnName="id")
      */
     private $mineral;
