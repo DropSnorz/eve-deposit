@@ -1,6 +1,6 @@
 <?php
 /**
- * @Entity(repositoryClass="MineralRepository")
+ * @Entity(repositoryClass="MineralRepository") @Table(name="mineral")
  */
 class Mineral
 {

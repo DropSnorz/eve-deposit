@@ -1,6 +1,6 @@
 <?php
 /**
- * @Entity(repositoryClass="OreRepository")
+ * @Entity(repositoryClass="OreRepository") @Table(name="ore")
  * @InheritanceType("SINGLE_TABLE")
  * @DiscriminatorColumn(name="discr", type="string")
  * @DiscriminatorMap({"primary" = "PrimaryOre", "secondary" = "SecondaryOre"})

@@ -7,7 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "webpack --watch --hot",
+    "build": "webpack --config=webpack.min.config.js"
   },
   "author": "",
   "license": "ISC",

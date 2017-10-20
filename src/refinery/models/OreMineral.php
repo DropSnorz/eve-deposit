@@ -1,6 +1,6 @@
 <?php
 /**
- * @Entity(repositoryClass="OreRepository")
+ * @Entity(repositoryClass="OreRepository") @Table(name="ore_mineral")
  */
 class OreMineral
 {

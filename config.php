@@ -24,8 +24,11 @@ $appModules = array("core", "refinery");
 
 $db_user = "root";
 $db_pass = "";
-$db_name = "bd";
-$db_path = DIR_BASE . "db/data.sqlite";
+$db_name = "eve_deposit";
+$db_host = "localhost";
+
+
+$proxyDir = DIR_BASE . "proxies";;
 
 
 
@@ -46,14 +49,23 @@ foreach (APP_MODULES as $module){
 
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
-$config = Setup::createAnnotationMetadataConfiguration(getModulesFolders("models"), $isDevMode);
+$config = Setup::createAnnotationMetadataConfiguration(getModulesFolders("models"), $isDevMode, $proxyDir);
+
+
+if(!$isDevMode){
+
+  $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
+  $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
+
+}
+
 
 $connectionParams = array(
     'dbname' => $db_name,
     'user' => $db_user,
     'password' => $db_pass,
-    'path' => $db_path,
-    'driver' => 'pdo_sqlite',
+    'host' => $db_host,
+    'driver' => 'pdo_mysql',
     'charset'  => 'utf8',
     'driverOptions' => array(
         1002 => 'SET NAMES utf8'
@@ -103,4 +115,3 @@ function getEntityManager(){
 	return PersistenseService::getEntityManager();
 }
 
-?>
