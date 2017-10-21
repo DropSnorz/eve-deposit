@@ -32,7 +32,11 @@ export const sortOreList = createSelector(
 )
 
 const compareOreSellPrice = (a,b) => {
-  return parseFloat(a.normalizedPrice) < parseFloat(b.normalizedPrice)
+  var result = parseFloat(a.normalizedPrice) - parseFloat(b.normalizedPrice)
+  if(result < 0) return 1
+  else if (result > 0) return -1
+  else return 0;
+
 }
 const compareOreMinerals = (mineralFilters) => {
   return (a,b) => {
@@ -54,10 +58,18 @@ const compareOreMinerals = (mineralFilters) => {
           }
         }
       }
-      return resA < resB;
+      var result = resA - resB;
+      if(result < 0) return 1
+      else if (result > 0) return -1
+      else return 0;
 
   }
 }
 const compareSecurityLevel = (a,b) => {
-  return parseFloat(a.securityLevel) < parseFloat(b.securityLevel)
+  var result = parseFloat(a.securityLevel) - parseFloat(b.securityLevel)
+
+  if(result < 0) return 1
+  else if (result > 0) return -1
+  else return 0;
+
 }
