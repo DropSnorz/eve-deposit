@@ -14,6 +14,10 @@ export default class OreList extends React.Component {
 				);
 		}, this);
 
+    if(oreList.length == 0){
+      list = <p className=" text-center text-muted">- There is no ore matching your filters -</p>
+    }
+
     return (
       <div>
        <span className="float-right"><small data-toggle="tooltip" data-placement="left" title="Prices pulled from Jita market after daily maintenance" id="price-info">Ore price (10m2) <i className="fa fa-sort-desc"></i></small></span>

@@ -96,6 +96,7 @@ class OreSortSelect extends React.Component {
                 value = {this.props.value}
                 placeholder = "Sort by"
                 clearable = {false}
+                searchable = {false}
                 simpleValue
 
                 />

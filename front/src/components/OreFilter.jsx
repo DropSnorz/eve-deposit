@@ -40,7 +40,7 @@ class OreFilter extends React.Component {
                 <SecurityFilter securityLevelFilter={this.props.securityLevelFilter} onSecurityLevelFilterChange={this.props.onSecurityLevelFilterChange}/>
 		    	<form>
                     <div className="row">
-                        <div className="col-md-8">
+                        <div className="col-md-8 mb-2">
                             <div className="">
 		    		            <OreNameSelect 
                                     oreList={this.props.oreList}
@@ -123,7 +123,7 @@ class MineralFilter extends React.Component{
             notSelected = "badge-transparent";
         }
         return <span className="mr-2">
-                <span className={"badge badge-primary badge-bordered badge-mineral-"+ mineral.id + " " + notSelected } onClick={this.handleClick} style={{cursor: "pointer"}}>
+                <span className={"mb-1 badge badge-primary badge-bordered badge-mineral-"+ mineral.id + " " + notSelected } onClick={this.handleClick} style={{cursor: "pointer"}}>
                     <img className="badge-icon" src={"/media/minerals/icons/" + mineral.id  + ".png"} alt="" />{mineral.name} </span>
                 </span>
     }
