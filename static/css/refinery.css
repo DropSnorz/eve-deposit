@@ -289,4 +289,8 @@ body {
   line-height: 1.2;
 }
 
+.nav-tabs .nav-link.active:hover{
+  color:#495057;
+}
+
 
