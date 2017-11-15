@@ -13,6 +13,8 @@ class Ore
     private $name;
    	/** @Column(type="integer") **/
     private $ref;
+    /** @Column(type="integer", options={"default"=1}) **/
+    private $type;
     /** @Column(type="float") **/
     private $unitVolume;
     /** @Column(type="float") **/
