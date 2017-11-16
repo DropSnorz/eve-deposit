@@ -50,3 +50,13 @@ export const toggleMineralFilter = (state = [], action) => {
 	}
 
 }
+
+export const oreTypeFilter = (state = 1, action) => {
+	switch (action.type){
+		case 'SET_ORE_TYPE_FILTER':{
+			return action.oreType
+		}
+		default:
+			return state
+	}
+}

@@ -9,7 +9,8 @@ import OreApp from './components/OreApp.jsx'
 var initialState = {oreNameVisibilityFilter: [],
 					oreSecurityLevelFilter:"ALL",
 					sortParameter:"SECURITY_LEVEL",
-					mineralFilters: []}
+					mineralFilters: [],
+					oreTypeFilter:1}
 
 let store = createStore(refineryApp, initialState);
 

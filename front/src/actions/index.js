@@ -28,3 +28,10 @@ export const triggerToggleMineralFilter = filter =>{
 	}
 }
 
+export const setOreTypeFilter = type => {
+	return{
+		type: 'SET_ORE_TYPE_FILTER',
+		oreType: type
+	}
+}
+
