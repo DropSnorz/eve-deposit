@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 16 Novembre 2017 à 12:24
+-- Généré le :  Jeu 16 Novembre 2017 à 15:24
 -- Version du serveur :  5.7.9
 -- Version de PHP :  7.0.0
 
@@ -184,14 +184,14 @@ INSERT INTO `ore` (`id`, `name`, `ref`, `unitVolume`, `unitPrice`, `normalizedPr
 
 DROP TABLE IF EXISTS `ore_mineral`;
 CREATE TABLE IF NOT EXISTS `ore_mineral` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ore_id` int(11) DEFAULT NULL,
   `mineral_id` int(11) DEFAULT NULL,
   `reprocessingEfficiency` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_4012D5375E8AB490` (`ore_id`),
   KEY `IDX_4012D53721F4A72C` (`mineral_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `ore_mineral`
@@ -244,7 +244,35 @@ INSERT INTO `ore_mineral` (`id`, `ore_id`, `mineral_id`, `reprocessingEfficiency
 (44, 43, 1, 13.75),
 (45, 43, 3, 1.563),
 (46, 43, 7, 0.2),
-(47, 46, 8, 0.075);
+(47, 46, 8, 0.075),
+(48, 53, 9, 69),
+(49, 53, 10, 35),
+(50, 53, 11, 1),
+(51, 53, 12, 414),
+(52, 51, 9, 69),
+(53, 51, 10, 35),
+(54, 51, 11, 1),
+(55, 51, 13, 414),
+(56, 58, 9, 691),
+(57, 58, 10, 1381),
+(58, 58, 11, 69),
+(59, 59, 9, 345),
+(60, 59, 10, 691),
+(61, 59, 11, 104),
+(62, 49, 9, 69),
+(63, 49, 10, 35),
+(64, 49, 11, 1),
+(65, 49, 14, 414),
+(66, 57, 9, 1381),
+(67, 57, 10, 691),
+(68, 57, 11, 35),
+(69, 60, 9, 173),
+(70, 60, 10, 691),
+(71, 60, 11, 173),
+(72, 55, 9, 69),
+(73, 55, 10, 35),
+(74, 55, 11, 1),
+(75, 55, 15, 414);
 
 -- --------------------------------------------------------
 
