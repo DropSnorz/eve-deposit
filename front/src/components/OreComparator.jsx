@@ -17,6 +17,11 @@ class OreComparator extends React.Component {
   onTabSelect(index, label){
     this.props.onTypeFilterChange(index + 1);
   }
+     htmlDecode(input){
+    var e = document.createElement('div');
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
   render() {
     var selectedTab = this.props.oreTypeFilter - 1;
     return 	<div>
@@ -24,7 +29,7 @@ class OreComparator extends React.Component {
                     <Tabs onSelect={this.onTabSelect} selected={selectedTab}>
                         <Tab label="Ore"></Tab>
                         <Tab label="Ice"></Tab>
-                        <Tab label="Gas"></Tab>
+                        <Tab label="Fullerenes"></Tab>
                     </Tabs>
                 </div>
     			<div className="ore-filters">

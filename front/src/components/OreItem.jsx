@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 export default class OreItem extends React.Component {
-	
+
   render() {
   	var item = this.props.item;
   	var secondaryOres = this.props.item.secondaryOres;
@@ -16,10 +16,17 @@ export default class OreItem extends React.Component {
 			);
 		}, this);
 
-  	var mineralDisplay = item.reprocessedMinerals.map(function(item){
-  		return <MineralDisplay key={item.id} value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
-  	}, this)
+    var mineralDisplay = <div></div>;
 
+    if(item.reprocessedMinerals.length > 0){
+      var mineralBadges = item.reprocessedMinerals.map(function(item){
+        return <MineralDisplay key={item.id} value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
+      }, this)
+
+      mineralDisplay = <div><i className="fa fa-recycle fa-lg"></i> - {mineralBadges}</div>
+
+    }
+  	
     var price = formatFloatPrice(parseFloat(item.normalizedPrice));
 
 
@@ -37,9 +44,7 @@ export default class OreItem extends React.Component {
 			    			</div>
 			    		</div>
 		    		</div>
-		    		<div>
-		    			<i className="fa fa-recycle fa-lg"></i> - {mineralDisplay}
-		    		</div>
+		    			{mineralDisplay}
 		    	</div>
     		</div>
   }
