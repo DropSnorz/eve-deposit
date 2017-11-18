@@ -280,6 +280,11 @@ body {
   max-height:20px;
 }
 
+.icon{
+    max-height:23px;
+
+}
+
 .mineral-icon{
   vertical-align:top;
   max-height:23px;

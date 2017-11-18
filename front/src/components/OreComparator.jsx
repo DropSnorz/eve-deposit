@@ -24,12 +24,16 @@ class OreComparator extends React.Component {
   }
   render() {
     var selectedTab = this.props.oreTypeFilter - 1;
+    var oreLabel = <span> <img src='/media/ore/icons/23_64_5.png' className="icon" alt='' /> Ore</span>
+    var iceLabel = <span> <img src='/media/ore/icons/51_64_5.png' className="icon" alt='' /> Ice</span>
+    var fullerenesLabel = <span> <img src='/media/ore/icons/62_64_10.png' className="icon" alt='' /> Fullerenes</span>
+
     return 	<div>
                 <div className="mb-2">
                     <Tabs onSelect={this.onTabSelect} selected={selectedTab}>
-                        <Tab label="Ore"></Tab>
-                        <Tab label="Ice"></Tab>
-                        <Tab label="Fullerenes"></Tab>
+                        <Tab label={oreLabel}></Tab>
+                        <Tab label={iceLabel}></Tab>
+                        <Tab label={fullerenesLabel}></Tab>
                     </Tabs>
                 </div>
     			<div className="ore-filters">
