@@ -162,7 +162,7 @@
 
     <script>
       $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
       })
       var primaryOres = JSON.parse('{{primaryOresData}}'.replace(/&quot;/g,'"'));
       var minerals = JSON.parse('{{mineralsData}}'.replace(/&quot;/g,'"'));
@@ -182,6 +182,28 @@
     </script>
 
     <script src="/static/js/bundle.js"></script>
+
+    <script>
+
+      var images = [];
+      function preloadImage(src) {
+        var image;
+        image = new Image();
+        image.src = src;
+        images.push(image);
+      }
+
+      $(window).on("load", function() {
+        for(var i = 0; i < primaryOres.length; i++){
+          preloadImage("/media/ore/icons/" + primaryOres[i].graphicId +".png");
+        }
+        for(var i = 0; i < minerals.length; i++){
+          preloadImage("/media/minerals/icons/" + minerals[i].id +".png");
+        }
+      })
+      
+
+    </script>
 
 
   </body>
