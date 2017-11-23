@@ -6,14 +6,16 @@ import OreSortSelect from './OreSortSelect.jsx';
 
 class OreFilter extends React.Component {
     propTypes:{
+        oreList: PropTypes.array,
+        mineralList: PropTypes.array,
         onNameFilterChange: PropTypes.func,
         onSecurityLevelFilterChange: PropTypes.func,
         onSortParameterChange: PropTypes.func,
-        onMineralFilterChange: PropTypes.func
-        //nameFilters: array
-        //securityLevelFilter : string
-        //sortParameter : string
-        //mineralFilters
+        onMineralFilterChange: PropTypes.func,
+        nameFilters: PropTypes.array,
+        securityLevelFilter : PropTypes.string,
+        sortParameter : PropTypes.string,
+        mineralFilters : PropTypes.array
     }
 
     constructor(props) {
@@ -26,56 +28,52 @@ class OreFilter extends React.Component {
         this.props.onNameFilterChange(value);
     }
 
-  render() {
+    render() {
 
-
-    var minerals = this.props.mineralList.map(function (item) {
+        var minerals = this.props.mineralList.map(function (item) {
             return (
                 <MineralFilter key={item.id} item={item} mineralFilters={this.props.mineralFilters} onMineralFilterChange={this.props.onMineralFilterChange}/>
             );
-    }, this);
+        }, this);
 
-    return  <div>
-    			
-                <SecurityFilter securityLevelFilter={this.props.securityLevelFilter} onSecurityLevelFilterChange={this.props.onSecurityLevelFilterChange}/>
-		    	<form>
-                    <div className="row">
-                        <div className="col-md-8 mb-2">
-                            <div className="">
-		    		            <OreNameSelect 
-                                    oreList={this.props.oreList}
-                                    onSelectChange={this.handleNameFilterChanges}
-                                    value = {this.props.nameFilters}
-
+        return  <div>
+                    <SecurityFilter securityLevelFilter={this.props.securityLevelFilter} onSecurityLevelFilterChange={this.props.onSecurityLevelFilterChange}/>
+    		    	<form>
+                        <div className="row">
+                            <div className="col-md-8 mb-2">
+                                <div className="">
+    		    		            <OreNameSelect 
+                                        oreList={this.props.oreList}
+                                        onSelectChange={this.handleNameFilterChanges}
+                                        value = {this.props.nameFilters}
+                                     />
+                                </div>                       
+                            </div>
+                            <div className="col-md-4">
+                                <OreSortSelect
+                                    onSelectChange = {this.props.onSortParameterChange}
+                                    value={this.props.sortParameter} 
                                  />
-                            </div>                       
+                            </div>
                         </div>
-                        <div className="col-md-4">
-                            <OreSortSelect
-                                onSelectChange = {this.props.onSortParameterChange}
-                                value={this.props.sortParameter} 
-                             />
-                        </div>
+    		    	</form>
+                    <div className="mt-2">
+                        {minerals}
                     </div>
-		    	</form>
-                <div className="mt-2">
-                    {minerals}
-                </div>
-    		</div>
-    		
+        		</div>
+        		
   }
 }
 
 class SecurityFilter extends React.Component{
         propTypes:{
-            onSecurityLevelFilterChange: PropTypes.func
-            //securityLevelFilter: stirng
-
+            onSecurityLevelFilterChange: PropTypes.func,
+            securityLevelFilter: PropTypes.string
         }
+
         constructor(props) {
             super(props);
             this.handleClick = this.handleClick.bind(this);
-
         }
 
         handleClick(event){
@@ -84,7 +82,6 @@ class SecurityFilter extends React.Component{
 
             this.props.onSecurityLevelFilterChange(target.getAttribute("data-filter"));
         }
-
 
         render(){
         var selected = this.props.securityLevelFilter;
@@ -106,9 +103,8 @@ class MineralFilter extends React.Component{
 
     propTypes:{
         item: PropTypes.object,
-        onMineralFilterChange: PropTypes.func
-        //mineralFilters: array
-
+        onMineralFilterChange: PropTypes.func,
+        mineralFilters: PropTypes.array
     }
 
     handleClick(e){

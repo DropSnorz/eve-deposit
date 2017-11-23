@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+
 
 export default class OreItem extends React.Component {
 
+  propTypes:{
+    item: PropTypes.object,
+    secondaryOres: PropTypes.array
+  }
   render() {
   	var item = this.props.item;
   	var secondaryOres = this.props.item.secondaryOres;
@@ -52,7 +58,7 @@ export default class OreItem extends React.Component {
 
 
 class SecurityLevelDisplay extends React.Component{
-	propTypes: {
+    propTypes: {
         value: PropTypes.float,
     }
 
@@ -70,23 +76,23 @@ class SecurityLevelDisplay extends React.Component{
 
 class MineralDisplay extends React.Component{
 	propTypes: {
-		item: PropTypes.object,
-        value: PropTypes.float,
-        //reprocessingStats
-    }
+    item: PropTypes.object,
+    value: PropTypes.float,
+    reprocessingStats: PropTypes.array
+  }
 
-    render(){
-      var max = this.props.reprocessingStats[this.props.item.id - 1]["1"];
-      var min = this.props.reprocessingStats[this.props.item.id - 1]["2"];
+  render(){
+    var max = this.props.reprocessingStats[this.props.item.id - 1]["1"];
+    var min = this.props.reprocessingStats[this.props.item.id - 1]["2"];
 
-      var average = 1
-      if(max-min != 0) average = (this.props.value - min) / (max-min);
-      if(average < 0.3) average = 0.3;
+    var average = 1
+    if(max-min != 0) average = (this.props.value - min) / (max-min);
+    if(average < 0.3) average = 0.3;
 
-    	return <span className={"badge badge-primary badge-labeled mr-1 badge-mineral-" + this.props.item.id} style={{opacity: average}} >
-    		<img className="badge-icon" src={"/media/minerals/icons/" + this.props.item.id + ".png"} alt="" /> 
-    		{this.props.item.name} <i>{this.props.value}</i>
-    	</span>
+  	return <span className={"badge badge-primary badge-labeled mr-1 badge-mineral-" + this.props.item.id} style={{opacity: average}} >
+  		<img className="badge-icon" src={"/media/minerals/icons/" + this.props.item.id + ".png"} alt="" /> 
+  		{this.props.item.name} <i>{this.props.value}</i>
+  	</span>
 
-    }
+  }
 }

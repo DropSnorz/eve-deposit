@@ -98,12 +98,10 @@ class OreSortSelect extends React.Component {
                 clearable = {false}
                 searchable = {false}
                 simpleValue
-
                 />
     		
   }
 }
-
 
 
 export default OreSortSelect;

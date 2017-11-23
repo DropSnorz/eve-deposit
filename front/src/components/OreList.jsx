@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import OreItem from './OreItem.jsx';
 
 export default class OreList extends React.Component {
 
+  propTypes:{
+    oreList: PropTypes.array
+  }
   render() {
 
   	var oreList = this.props.oreList;

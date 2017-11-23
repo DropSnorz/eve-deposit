@@ -5,10 +5,11 @@ import Filter from '../containers/Filter.js';
 import {Tabs, Tab} from 'react-bootstrap-tabs';
 
 
-
 class OreComparator extends React.Component {
   propTypes:{
-        onTypeFilterChange: PropTypes.func
+        onTypeFilterChange: PropTypes.func,
+        oreList: PropTypes.array,
+        mineralList: PropTypes.array
   }
   constructor(props) {
         super(props);
@@ -17,11 +18,7 @@ class OreComparator extends React.Component {
   onTabSelect(index, label){
     this.props.onTypeFilterChange(index + 1);
   }
-     htmlDecode(input){
-    var e = document.createElement('div');
-    e.innerHTML = input;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-  }
+
   render() {
     var selectedTab = this.props.oreTypeFilter - 1;
     var oreLabel = <span> <img src='/media/ore/icons/23_64_5.png' className="icon" alt='' /> Ore</span>

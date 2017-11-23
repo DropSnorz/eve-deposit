@@ -16,9 +16,7 @@ const OreValue = createClass({
     handleRemove(){
 
         if(!this.props.disabled) {
-            
-            this.props.onRemove(this.props.value)
-                        
+            this.props.onRemove(this.props.value)             
         }
     },
 
@@ -108,7 +106,6 @@ class OreNameSelect extends React.Component {
                 value = {this.props.value}
                 placeholder="Select ORE"
                 simpleValue
-
                 />
     		
   }
