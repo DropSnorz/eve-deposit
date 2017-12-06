@@ -27,12 +27,14 @@ class RefineryController extends BaseController{
 		$bestHSOreCriteria = Criteria::create()
 		    ->where(Criteria::expr()->eq("type", 1))
     		->andWhere(Criteria::expr()->gt("securityLevel", 0.4))
+    		->andWhere(Criteria::expr()->eq("special", false))
     		->setMaxResults(1)
 		;
 
 		$bestLSOreCriteria = Criteria::create()
 		    ->where(Criteria::expr()->eq("type", 1))
     		->andWhere(Criteria::expr()->lt("securityLevel", 0.4))
+    		->andWhere(Criteria::expr()->eq("special", false))
     		->setMaxResults(1)
 		;
 

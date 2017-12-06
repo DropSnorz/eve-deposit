@@ -298,4 +298,6 @@ body {
   color:#495057;
 }
 
-
+.display-block{
+  display:block;
+}

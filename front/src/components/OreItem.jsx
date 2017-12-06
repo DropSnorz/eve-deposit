@@ -35,15 +35,23 @@ export default class OreItem extends React.Component {
   	
     var price = formatFloatPrice(parseFloat(item.normalizedPrice));
 
+    var specialIcon;
+
+    if(item.special){
+      specialIcon = <span className="ml-1"><i className="fa fa-exclamation-circle" data-toggle="tooltip" data-placement="right" title="Special Ore"></i></span>;
+    }
+
 
     return 	<div className="">
     			<div className="ore-row">
 		    		<div className="media">
-		    			<span className="d-flex"><SecurityLevelDisplay value={item.securityLevel} /></span>
-		    			<img className="d-flex mr-3" src={"/media/ore/icons/" + item.graphicId + ".png"} alt="" />
+		    			<span className="">
+                <div><SecurityLevelDisplay value={item.securityLevel} /></div>
+              </span>
+		    			<img className="d-flex mr-2" src={"/media/ore/icons/" + item.graphicId + ".png"} alt="" />
 			    		<div className="media-body">
 			    			<strong>
-			    				{item.name}<span className="float-right text-success">{price} ISK</span>
+			    				{item.name} {specialIcon} <span className="float-right text-success">{price} ISK</span>
 			    			</strong>
 			    			<div>
 			    				{secondaryOresDisplay}

@@ -26,7 +26,7 @@ class OreComparator extends React.Component {
     var fullerenesLabel = <span> <img src='/media/ore/icons/62_64_10.png' className="icon" alt='' /> Fullerenes</span>
 
     return 	<div>
-                <div className="mb-2">
+                <div className="mb-3">
                     <Tabs onSelect={this.onTabSelect} selected={selectedTab}>
                         <Tab label={oreLabel}></Tab>
                         <Tab label={iceLabel}></Tab>

@@ -25,6 +25,8 @@ class Ore
     private $securityLevel;
     /** @Column(type="string", nullable=true) **/
     private $graphicId;
+    /** @Column(type="boolean", options={"default"=false}) **/
+    private $special;
 
     /**
      * One Ore has Many Minerals.
