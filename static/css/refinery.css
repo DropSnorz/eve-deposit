@@ -259,9 +259,19 @@ body {
 }
 
 .ore-row{
-  background-color:rgba(45, 45, 45, 0.4);
-  border: 1px solid rgba(69, 69, 69, 0.55);
+  background-color:rgb(18, 18, 18);
+  border: 1px solid rgb(36, 36, 36);
   padding:8px;
+}
+
+.special-ore-row{
+  background: repeating-linear-gradient(
+  45deg,
+  #121212,
+  #121212 30px,
+  #5b2b2b 30px,
+  #5b2b2b 40px
+);
 }
 
 .badge-bordered{
