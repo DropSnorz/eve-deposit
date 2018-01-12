@@ -48,16 +48,17 @@ foreach (APP_MODULES as $module){
 //Doctrine ORM Configuration
 
 
-// Create a simple "default" Doctrine ORM configuration for Annotations
-$config = Setup::createAnnotationMetadataConfiguration(getModulesFolders("models"), $isDevMode, $proxyDir);
-
+$useSimpleAnnotationReader = true;
+$cache = null;
 
 if(!$isDevMode){
 
-  $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-  $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
+  $cache = new \Doctrine\Common\Cache\FilesystemCache("cache");
 
 }
+
+// Create a simple "default" Doctrine ORM configuration for Annotations
+$config = Setup::createAnnotationMetadataConfiguration(getModulesFolders("models"), $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
 
 
 $connectionParams = array(
