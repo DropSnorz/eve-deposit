@@ -36,10 +36,19 @@ class ESIApiService{
 
 			foreach ($ores as $ore) {
 				$unitPrice = ESIApiService::getLatestItemPrice($ore->getRef());
-				$ore->setUnitPrice($unitPrice);
-				$normalizedPrice = $unitPrice * (10 / $ore->getUnitVolume());
-				$normalizedPrice = floor($normalizedPrice * 100) / 100;
-				$ore->setNormalizedPrice($normalizedPrice);
+
+				if($unitPrice != null){
+					$ore->setUnitPrice($unitPrice);
+					$normalizedPrice = $unitPrice * (10 / $ore->getUnitVolume());
+					$normalizedPrice = floor($normalizedPrice * 100) / 100;
+					$ore->setNormalizedPrice($normalizedPrice);
+				}
+				else{
+					$ore->setUnitPrice(0.0);
+					$ore->setNormalizedPrice(0.0);
+
+				}
+				
 			}
 
 			$appData->setValue(date('Y-m-d H:i:s'));

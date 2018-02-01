@@ -22,7 +22,7 @@ class OreComparator extends React.Component {
   render() {
     var selectedTab = this.props.oreTypeFilter - 1;
     var oreLabel = <span> <img src='/media/ore/icons/23_64_5.png' className="icon" alt='' /> Ore</span>
-    var moonOreLabel = <span> <img src='/media/ore/icons/23_64_5.png' className="icon" alt='' /> Moon Ore</span>
+    var moonOreLabel = <span> <img src='/media/ore/icons/23_64_12.png' className="icon" alt='' /> Moon Ore</span>
     var iceLabel = <span> <img src='/media/ore/icons/51_64_5.png' className="icon" alt='' /> Ice</span>
     var fullerenesLabel = <span> <img src='/media/ore/icons/62_64_10.png' className="icon" alt='' /> Fullerenes</span>
 

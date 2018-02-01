@@ -13,7 +13,14 @@ export default class OreItem extends React.Component {
   	var item = this.props.item;
   	var secondaryOres = this.props.item.secondaryOres;
   	var secondaryOresDisplay = secondaryOres.map(function (item) {
-      var price = formatFloatPrice(parseFloat(item.normalizedPrice));
+
+      var price = parseFloat(item.normalizedPrice);
+      if(price == 0){
+        price = "--";
+      } 
+      else{
+        price = formatFloatPrice(price);
+      }
 
 		return (
 			<div key={item.id} className="small">
@@ -33,7 +40,13 @@ export default class OreItem extends React.Component {
 
     }
   	
-    var price = formatFloatPrice(parseFloat(item.normalizedPrice));
+    var price = parseFloat(item.normalizedPrice);
+    if(parseInt(price) == 0){
+      price = "--";
+    }
+    else{
+      price = formatFloatPrice(price);
+    }
 
     var specialIcon;
     var specialClass = "";
