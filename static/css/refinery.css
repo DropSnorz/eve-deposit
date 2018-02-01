@@ -311,3 +311,7 @@ body {
 .display-block{
   display:block;
 }
+
+.text-disabled{
+  color:#7b7b7b;
+}

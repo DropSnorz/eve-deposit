@@ -56,7 +56,6 @@ export default class OreItem extends React.Component {
       specialClass = "special-ore-row";
     }
 
-
     return 	<div className="">
     			<div className={"ore-row "+ specialClass}>
 		    		<div className="media">
@@ -73,6 +72,9 @@ export default class OreItem extends React.Component {
 			    			</div>
 			    		</div>
 		    		</div>
+            <div class="ml-5 small text-disabled">
+               | <i class="fa fa-rocket ml-1"></i> {item.unitVolume} m3 | <a target="_blank" href={"https://evemarketer.com/regions/10000002/types/" + item.ref} > <i class="fa fa-globe ml-1"></i> See on Eve Marketer</a>
+            </div>
 		    			{mineralDisplay}
 		    	</div>
     		</div>
