@@ -21,6 +21,11 @@ export const filterOreListByType = createSelector(
 export const filterMineralListByType = createSelector(
   [ getMineralList, getTypeFilter ],
   (mineralList, typeFilter) => {
+
+    //Bad design, but since the Upwell Refineries update, moon ore can be reprocessed in minerals and materials
+    if(typeFilter == 2){
+      typeFilter = 1;
+    }
     var filteredOre = mineralList.filter(function(mineralItem){
      
         return mineralItem.type == typeFilter;

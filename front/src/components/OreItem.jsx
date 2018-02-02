@@ -72,8 +72,8 @@ export default class OreItem extends React.Component {
 			    			</div>
 			    		</div>
 		    		</div>
-            <div class="ml-5 small text-disabled">
-               | <i class="fa fa-rocket ml-1"></i> {item.unitVolume} m3 | <a target="_blank" href={"https://evemarketer.com/regions/10000002/types/" + item.ref} > <i class="fa fa-globe ml-1"></i> See on Eve Marketer</a>
+            <div className="ml-5 small text-disabled">
+               | <i className="fa fa-rocket ml-1"></i> {item.unitVolume} m3 | <a target="_blank" href={"https://evemarketer.com/regions/10000002/types/" + item.ref} > <i className="fa fa-globe ml-1"></i> View on Eve Marketer</a>
             </div>
 		    			{mineralDisplay}
 		    	</div>
@@ -115,7 +115,7 @@ class MineralDisplay extends React.Component{
     if(average < 0.3) average = 0.3;
 
   	return <span className={"badge badge-primary badge-labeled mr-1 badge-mineral-" + this.props.item.id} style={{opacity: average}} >
-  		<img className="badge-icon" src={"/media/minerals/icons/" + this.props.item.id + ".png"} alt="" /> 
+  		<img className="badge-icon" src={"/media/minerals/icons/" + this.props.item.ref + ".png"} alt="" /> 
   		{this.props.item.name} <i>{this.props.value}</i>
   	</span>
 
