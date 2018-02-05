@@ -30,13 +30,26 @@ export default class OreItem extends React.Component {
 		}, this);
 
     var mineralDisplay = <div></div>;
+    var materialDisplay = <div></div>;
 
-    if(item.reprocessedMinerals.length > 0){
-      var mineralBadges = item.reprocessedMinerals.map(function(item){
-        return <MineralDisplay key={item.id} value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
+    var mineralList = item.reprocessedMinerals.filter(item => item.mineral.type != 2);
+    var materialList = item.reprocessedMinerals.filter(item => item.mineral.type == 2);
+
+
+    if(mineralList.length > 0){
+      var mineralBadges = mineralList.map(function(item){
+          return <MineralDisplay key={item.id} value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
       }, this)
 
       mineralDisplay = <div><i className="fa fa-recycle fa-lg"></i> - {mineralBadges}</div>
+    }
+
+    if(materialList.length > 0){
+      var materialBadges = materialList.map(function(item){
+          return <MaterialDisplay key={item.id} value={item.reprocessingEfficiency} item = {item.mineral} reprocessingStats={this.props.reprocessingStats} />
+      }, this)
+
+      materialDisplay = <div><i className="fa fa-flask fa-lg"></i> - {materialBadges}</div>
 
     }
   	
@@ -76,6 +89,7 @@ export default class OreItem extends React.Component {
                | <i className="fa fa-rocket ml-1"></i> {item.unitVolume} m3 | <a target="_blank" href={"https://evemarketer.com/regions/10000002/types/" + item.ref} > <i className="fa fa-globe ml-1"></i> View on Eve Marketer</a>
             </div>
 		    			{mineralDisplay}
+              {materialDisplay}
 		    	</div>
     		</div>
   }
@@ -118,6 +132,30 @@ class MineralDisplay extends React.Component{
   		<img className="badge-icon" src={"/media/minerals/icons/" + this.props.item.ref + ".png"} alt="" /> 
   		{this.props.item.name} <i>{this.props.value}</i>
   	</span>
+
+  }
+}
+
+
+class MaterialDisplay extends React.Component{
+  propTypes: {
+    item: PropTypes.object,
+    value: PropTypes.float,
+    reprocessingStats: PropTypes.array
+  }
+
+  render(){
+    var max = this.props.reprocessingStats[this.props.item.id - 1]["1"];
+    var min = this.props.reprocessingStats[this.props.item.id - 1]["2"];
+
+    var average = 1
+    if(max-min != 0) average = (this.props.value - min) / (max-min);
+    if(average < 0.3) average = 0.3;
+
+    return <span className={"mr-1" + this.props.item.id} style={{opacity: average}} data-toggle="tooltip" data-placement="top" title={this.props.item.name}>
+      <img className="" src={"/media/minerals/icons/" + this.props.item.ref + ".png"} alt="" /> 
+      <i className="small">{this.props.value}</i>
+    </span>
 
   }
 }
