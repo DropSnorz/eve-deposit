@@ -27,6 +27,8 @@ class Ore
     private $graphicId;
     /** @Column(type="boolean", options={"default"=false}) **/
     private $special;
+    /** @Column(type="string", nullable=true) **/
+    private $category;
 
     /**
      * One Ore has Many Minerals.

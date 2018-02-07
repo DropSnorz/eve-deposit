@@ -69,11 +69,20 @@ export default class OreItem extends React.Component {
       specialClass = "special-ore-row";
     }
 
+    var iconDisplay;
+
+    if(item.category != null){
+      iconDisplay = <small title={item.category}>{item.category.substring(0,2)}</small>
+    }
+    else{
+      iconDisplay = <SecurityLevelDisplay value={item.securityLevel} />
+    }
+
     return 	<div className="">
     			<div className={"ore-row "+ specialClass}>
 		    		<div className="media">
 		    			<span className="">
-                <div><SecurityLevelDisplay value={item.securityLevel} /></div>
+                <div>{iconDisplay}</div>
               </span>
 		    			<img className="d-flex mr-2" src={"/media/ore/icons/" + item.graphicId + ".png"} alt="" />
 			    		<div className="media-body">
@@ -111,7 +120,6 @@ class SecurityLevelDisplay extends React.Component{
 
     }
 }
-
 
 class MineralDisplay extends React.Component{
 	propTypes: {
