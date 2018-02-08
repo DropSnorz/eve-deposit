@@ -1,6 +1,6 @@
 <?php
 
-require_once "vendor/autoload.php";
+require_once __DIR__  . "/vendor/autoload.php";
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManager;
 
 // Server parameters
 
-define('DIR_BASE',      dirname( __FILE__ )  . '/');
+define('DIR_BASE',      __DIR__  . '/');
 define('DIR_MODULES',  DIR_BASE . "src/");
 define('DIR_CORE',    DIR_MODULES . 'core/');
 
@@ -34,7 +34,7 @@ $proxyDir = DIR_BASE . "proxies";;
 
 // Override current configuration with local properties
 if(file_exists("config.local.php")){
-  include "config.local.php";
+  include __DIR__ ."/config.local.php";
 }
 
 define('APP_MODULES', $appModules);

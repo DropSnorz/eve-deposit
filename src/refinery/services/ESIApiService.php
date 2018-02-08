@@ -6,14 +6,15 @@ class ESIApiService{
 
 		$triggerApiUpdate = false;
 		$em = getEntityManager();
-		$appData = $em->getRepository("AppData")->find("last_api_pull_date");
+		$lastPullDate = $em->getRepository("AppData")->find("last_api_pull_date");
 
-		if($appData == null){
 
-			$appData = new AppData();
-			$appData->setId("last_api_pull_date");
-			$appData->setValue(date('Y-m-d H:i:s'));
-			$em->persist($appData);
+		if($lastPullDate == null){
+
+			$lastPullDate = new AppData();
+			$lastPullDate->setId("last_api_pull_date");
+			$lastPullDate->setValue(date('Y-m-d H:i:s'));
+			$em->persist($lastPullDate);
 			$em->flush();
 
 			$triggerApiUpdate = true;
@@ -21,10 +22,11 @@ class ESIApiService{
 		}
 		else{
 
-			$lastDate = DateTime::createFromFormat('Y-m-d H:i:s', $appData->getValue());
+			$lastDate = DateTime::createFromFormat('Y-m-d H:i:s', $lastPullDate->getValue());
 			$diff = abs(($lastDate->getTimestamp() - (new DateTime())->getTimestamp()) / 60);
 			
-			if($diff > 180){
+
+			if($diff > 1 && self::requestApiUpdateLock()){
 				$triggerApiUpdate = true;
 			}				
 
@@ -46,33 +48,29 @@ class ESIApiService{
 				else{
 					$ore->setUnitPrice(0.0);
 					$ore->setNormalizedPrice(0.0);
-
 				}
 				
 			}
 
-			$appData->setValue(date('Y-m-d H:i:s'));
-
+			$lastPullDate->setValue(date('Y-m-d H:i:s'));
 			$em->flush();
 
+			self::releaseApiUpdateLock();
 			$content="Cache data successfully updated from ESI API";
 
 		}
 		else{
 			$content="Warning: API Call bypassed (Permission denied or Already up to date)";
-
 		}
 
 		return $content;
 	}
-
 
 	public static function getLatestItemPrice($itemId){
 
 		$data = self::CallAPI("GET", "https://esi.tech.ccp.is/latest/markets/10000002/history/", 
 			["type_id" => $itemId,
 			"datasource" => "tranquility"]);
-
 
 		$data = json_decode($data);
 
@@ -89,6 +87,46 @@ class ESIApiService{
 		else{
 			return null;
 		}
+	}
+
+	public static function requestApiUpdateLock(){
+
+		$em = getEntityManager();
+		$apiUpdateLock = $em->getRepository("AppData")->find("api_update_lock");
+
+		if($apiUpdateLock == null){
+
+			$apiUpdateLock = new AppData();
+			$apiUpdateLock->setId("api_update_lock");
+			$apiUpdateLock->setValue("locked");
+			$em->persist($apiUpdateLock);
+			$em->flush();
+
+			return true;
+		}
+		else if($apiUpdateLock->getValue() == "free"){
+
+			$apiUpdateLock->setValue("locked");
+			$em->flush();
+
+			return true;
+
+		}
+		else{
+			return false;
+		}
+
+
+	}
+
+	public static function releaseApiUpdateLock(){
+
+		$em = getEntityManager();
+
+		$apiUpdateLock = $em->getRepository("AppData")->find("api_update_lock");
+		$apiUpdateLock->setValue("free");
+		$em->flush();
+
 	}
 
 	public static function getItemPrice($itemId){
@@ -122,7 +160,8 @@ class ESIApiService{
 
 	    curl_setopt($curl, CURLOPT_URL, $url);
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-	    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+	    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
 	    $result = curl_exec($curl);
 
