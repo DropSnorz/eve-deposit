@@ -31,7 +31,7 @@ class OreRepository extends EntityRepository{
 
 	public function findBestHSOre(){
 
-	   $dql = "SELECT o FROM PrimaryOre o WHERE o.securityLevel > 0.4 AND o.type == 1 ORDER By o.normalizedPrice DESC";
+	   $dql = "SELECT o FROM PrimaryOre o WHERE o.securityLevel > 0.4 AND o.type = 1 ORDER By o.normalizedPrice DESC";
        $query = $this->getEntityManager()->createQuery($dql)->setMaxResults(1);
 
        return $query->getSingleResult();
@@ -39,7 +39,7 @@ class OreRepository extends EntityRepository{
 	}
 
 	public function findBestLSOre(){
-	   $dql = "SELECT o FROM PrimaryOre o WHERE o.type == 1 ORDER By o.normalizedPrice DESC";
+	   $dql = "SELECT o FROM PrimaryOre o WHERE o.type = 1 ORDER By o.normalizedPrice DESC";
        $query = $this->getEntityManager()->createQuery($dql)->setMaxResults(1);
 
        return $query->getSingleResult();

@@ -1,4 +1,7 @@
 <?php
+require_once "RefineryService.php";
+require_once "DataCacheService.php";
+
 
 class ESIApiService{
 
@@ -26,7 +29,7 @@ class ESIApiService{
 			$diff = abs(($lastDate->getTimestamp() - (new DateTime())->getTimestamp()) / 60);
 			
 
-			if($diff > 1 && self::requestApiUpdateLock()){
+			if($diff > 180 && self::requestApiUpdateLock()){
 				$triggerApiUpdate = true;
 			}				
 
@@ -56,6 +59,11 @@ class ESIApiService{
 			$em->flush();
 
 			self::releaseApiUpdateLock();
+
+			DataCacheService::persistData("ore", RefineryService::fetchOreList());
+			DataCacheService::persistData("minerals", RefineryService::fetchMinerals());
+			DataCacheService::persistData("reprocessingStats", RefineryService::fetchReprocessingStats());
+
 			$content="Cache data successfully updated from ESI API";
 
 		}

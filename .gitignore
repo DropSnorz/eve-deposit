@@ -4,5 +4,7 @@ vendor/**
 tests/_log/*
 node_modules/**
 db/data.sqlite
+data-cache/**
+!data-cache/.htaccess
 static/js/bundle.js
 proxies/**
