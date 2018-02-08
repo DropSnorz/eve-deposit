@@ -95,7 +95,7 @@ export default class OreItem extends React.Component {
 			    		</div>
 		    		</div>
             <div className="ml-5 small text-disabled">
-               | <i className="fa fa-rocket ml-1"></i> {item.unitVolume} m3 | <a target="_blank" href={"https://evemarketer.com/regions/10000002/types/" + item.ref} > <i className="fa fa-globe ml-1"></i> View on Eve Marketer</a>
+               | <i className="fa fa-rocket ml-1"></i> {item.unitVolume} m3 | <a target="_blank" href={"https://evemarketer.com/regions/10000002/types/" + item.ref} > <i className="fa fa-line-chart ml-1"></i> View on Eve Marketer</a>
             </div>
 		    			{mineralDisplay}
               {materialDisplay}
