@@ -52,7 +52,8 @@ class ESIApiService{
 					$ore->setUnitPrice(0.0);
 					$ore->setNormalizedPrice(0.0);
 				}
-				
+
+				$em->flush();
 			}
 
 			$lastPullDate->setValue(date('Y-m-d H:i:s'));
@@ -169,7 +170,6 @@ class ESIApiService{
 	    curl_setopt($curl, CURLOPT_URL, $url);
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 	    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
 	    $result = curl_exec($curl);
 

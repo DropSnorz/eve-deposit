@@ -13,9 +13,10 @@ $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, "http://evedeposit.dropsnorz.com/pullESIData");
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
 $result = curl_exec($curl);
+
+echo "Trigger WebServer Request...";
 
 curl_close($curl);
 
