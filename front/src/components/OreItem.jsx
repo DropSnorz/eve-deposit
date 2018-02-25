@@ -22,9 +22,14 @@ export default class OreItem extends React.Component {
         price = formatFloatPrice(price);
       }
 
+      var variantBonusDisplay = "";
+      if(item.variantBonus != null){
+        variantBonusDisplay = "(+" + item.variantBonus * 100 + "%)";
+      }
+
 		return (
 			<div key={item.id} className="small">
-			 <span>{item.name} <span className="float-right text-success">{price} ISK</span></span>
+			 <span>{item.name} <span className="small">{variantBonusDisplay}</span> <span className="float-right text-success">{price} ISK</span></span>
 			</div>
 			);
 		}, this);

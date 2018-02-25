@@ -117,8 +117,15 @@ class SecondaryOre extends Ore
     */
 	private $primaryOre;
 
+  /** @Column(type="float", nullable = true) **/
+  private $variantBonus;
+
 	public function getPrimaryOre(){
 		return $this->primaryOre;
 	}
+
+  public function getVariantBonus(){
+    return $this->variantBonus;
+  }
 
 }
