@@ -7,6 +7,7 @@ class ESIApiService{
 
 	public static function updateData(){
 
+		set_time_limit(500);
 		$triggerApiUpdate = false;
 		$em = getEntityManager();
 		$lastPullDate = $em->getRepository("AppData")->find("last_api_pull_date");

@@ -11,7 +11,7 @@ class RefineryService{
 			return DataCacheService::getData("ore");
 		}
 		else{
-			return fetchOreList();
+			return self::fetchOreList();
 		}
 		
 	}
@@ -22,7 +22,7 @@ class RefineryService{
 			return DataCacheService::getData("minerals");
 		}
 		else{
-			return fetchMinerals();
+			return self::fetchMinerals();
 		}
 		
 	}
@@ -34,7 +34,7 @@ class RefineryService{
 			return DataCacheService::getData("reprocessingStats");
 		}
 		else{
-			return fetchReprocessingStats();
+			return self::fetchReprocessingStats();
 		}
 		
 	}

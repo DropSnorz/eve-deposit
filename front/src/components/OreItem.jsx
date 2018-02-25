@@ -85,7 +85,7 @@ export default class OreItem extends React.Component {
                 <div>{iconDisplay}</div>
               </span>
 		    			<img className="d-flex mr-2" src={"/media/ore/icons/" + item.graphicId + ".png"} alt="" />
-			    		<div className="media-body">
+			    		<div className="media-body mb-1">
 			    			<strong>
 			    				{item.name} {specialIcon} <span className="float-right text-success">{price} ISK</span>
 			    			</strong>
