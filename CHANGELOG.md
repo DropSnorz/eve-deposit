@@ -1,7 +1,10 @@
 # Changelog
 
+## 1.2.1 (10/12/2018)
+- Moon-variants ore
+- Ore variants bonus displayed
 
-## 1.2.0 Moon Mining (10/12/2018)
+## 1.2.0 Moon Mining (10/02/2018)
 - Moon ore data and reprocessing stats
 - Show ore volume
 - Links to Eve marketer items
