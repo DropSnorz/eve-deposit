@@ -78,7 +78,7 @@ class ESIApiService{
 
 	public static function getLatestItemPrice($itemId){
 
-		$data = self::CallAPI("GET", "https://esi.tech.ccp.is/latest/markets/10000002/history/", 
+		$data = self::CallAPI("GET", "https:/esi.evetech.net/latest/markets/10000002/history/", 
 			["type_id" => $itemId,
 			"datasource" => "tranquility"]);
 
@@ -141,7 +141,7 @@ class ESIApiService{
 
 	public static function getItemPrice($itemId){
 
-		return self::CallAPI("GET", "https://esi.tech.ccp.is/latest/markets/10000002/history/", 
+		return self::CallAPI("GET", "https://esi.evetech.net/latest/markets/10000002/history/", 
 			["type_id" => $itemId,
 			"datasource" => "tranquility"]);
 	}
