@@ -15,7 +15,7 @@ $isDevMode = true;
 
 $db_user = "root";
 $db_pass = "";
-$db_name = "db";
-$db_host = "localhost";
+$db_name = "eve-deposit";
+$db_path = DIR_BASE . "db/eve-deposit.sqlite";
 
 ?>

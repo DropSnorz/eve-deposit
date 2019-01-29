@@ -24,8 +24,8 @@ $appModules = array("core", "refinery");
 
 $db_user = "root";
 $db_pass = "";
-$db_name = "eve_deposit";
-$db_host = "localhost";
+$db_name = "eve-deposit";
+$db_path = DIR_BASE . "db/eve-deposit.sqlite";
 
 
 $proxyDir = DIR_BASE . "proxies";;
@@ -65,8 +65,8 @@ $connectionParams = array(
     'dbname' => $db_name,
     'user' => $db_user,
     'password' => $db_pass,
-    'host' => $db_host,
-    'driver' => 'pdo_mysql',
+    'path' => $db_path,
+    'driver' => 'pdo_sqlite',
     'charset'  => 'utf8',
     'driverOptions' => array(
         1002 => 'SET NAMES utf8'

@@ -3,7 +3,7 @@ config.local.php
 vendor/**
 tests/_log/*
 node_modules/**
-db/data.sqlite
+db/*.sqlite
 data-cache/**
 !data-cache/.htaccess
 static/js/bundle.js
