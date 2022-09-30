@@ -13,7 +13,7 @@
         "respect/validation": "^1.1",
         "doctrine/orm": "2.4.*",
         "rdlowrey/auryn": "^1.4",
-        "twig/twig": "~1.0"
+        "twig/twig": "~2.12"
 
     },
 
